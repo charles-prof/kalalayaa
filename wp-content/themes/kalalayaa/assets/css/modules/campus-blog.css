@@ -1,0 +1,82 @@
+/**
+ * SMACSS: Module - Campus Blog Feed
+ * Staff-authored updates, festival celebrations, and milestone posts.
+ */
+
+.m-campus-blog {
+  padding-block: var(--wp--preset--spacing--100, 80px);
+  background: var(--wp--preset--color--white, #FFFFFF);
+  border-top: 1px solid var(--wp--preset--color--border-subtle, #D6E8EB);
+}
+
+.m-campus-blog__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--wp--preset--spacing--30, 24px);
+  margin-bottom: var(--wp--preset--spacing--60, 48px);
+  flex-wrap: wrap;
+}
+
+.m-campus-blog__eyebrow {
+  display: inline-block;
+  font-size: var(--wp--preset--font-size--xs, 12px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--campus-accent, var(--wp--preset--color--teal-primary));
+  margin-bottom: var(--wp--preset--spacing--10, 8px);
+}
+
+.m-campus-blog__title {
+  font-size: clamp(28px, 3.5vw, 38px);
+  margin: 0;
+}
+
+.m-campus-blog__all-link {
+  font-size: var(--wp--preset--font-size--sm, 14px);
+  font-weight: 700;
+  color: var(--campus-accent, var(--wp--preset--color--teal-primary));
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: gap 0.2s ease;
+}
+
+.m-campus-blog__all-link:hover {
+  gap: 8px;
+  text-decoration: underline;
+}
+
+.m-campus-blog__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--wp--preset--spacing--40, 32px);
+}
+
+.m-campus-blog__empty {
+  background: var(--wp--preset--color--teal-canvas, #F4FAFB);
+  border: 1px dashed var(--wp--preset--color--border-subtle, #D6E8EB);
+  border-radius: 12px;
+  padding: var(--wp--preset--spacing--60, 48px);
+  text-align: center;
+}
+
+.m-campus-blog__empty-text {
+  font-size: var(--wp--preset--font-size--base, 16px);
+  color: var(--wp--preset--color--teal-muted, #2A4F5A);
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .m-campus-blog__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .m-campus-blog__grid {
+    grid-template-columns: 1fr;
+  }
+}

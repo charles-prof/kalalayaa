@@ -1,29 +1,19 @@
 /**
- * SMACSS: State - is-active
- * Handles active tab, active navigation chip, and visible micro-views.
+ * SMACSS: State - is-active & Reveal Transitions
+ * Dynamic UI states toggled via JavaScript.
  */
 
-.is-active.strip-btn,
-.strip-btn.is-active {
-  background: var(--wp--preset--color--teal-primary, #0E2E35) !important;
-  color: white !important;
-  border-color: var(--wp--preset--color--teal-primary, #0E2E35) !important;
-  font-weight: 600;
-  box-shadow: 0 2px 8px rgba(14, 46, 53, 0.25);
+.is-active {
+  color: var(--campus-accent, var(--wp--preset--color--teal-primary)) !important;
 }
 
-.is-active.m-modal-backdrop,
-.m-modal-backdrop.is-active {
+.is-reveal-target {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.is-reveal-target.is-visible {
   opacity: 1;
-  pointer-events: auto;
-}
-
-.is-active.m-modal-backdrop .m-modal-box,
-.m-modal-backdrop.is-active .m-modal-box {
-  transform: translateY(0) scale(1);
-}
-
-.is-active.micro-view,
-.micro-view.is-active {
-  display: block !important;
+  transform: translateY(0);
 }

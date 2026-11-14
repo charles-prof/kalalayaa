@@ -1,61 +1,39 @@
 /**
- * SMACSS: Module - Toast Notification & Floating WhatsApp Action
+ * SMACSS: Module - Toast Notification
+ * Accessible alert feedback after inquiry submissions.
  */
 
-.m-toast-stack {
-  position: fixed;
-  bottom: var(--wp--preset--spacing--40, 32px);
-  left: var(--wp--preset--spacing--40, 32px);
-  z-index: 300;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
 .m-toast {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px var(--wp--preset--spacing--30, 24px);
-  background: var(--wp--preset--color--teal-primary, #0E2E35);
-  color: white;
-  border-radius: 8px;
-  font-size: var(--wp--preset--font-size--sm, 14px);
-  font-weight: 500;
-  box-shadow: 0 12px 24px -4px rgba(14, 46, 53, 0.25);
-  border-left: 4px solid var(--wp--preset--color--green-accent, #27AF0A);
-  animation: toastIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
-  max-width: 340px;
-}
-
-@keyframes toastIn {
-  from { transform: translateX(-24px); opacity: 0; }
-  to   { transform: translateX(0);     opacity: 1; }
-}
-
-/* Floating WhatsApp Button - Fitts's Law 56px */
-.m-wa-float {
   position: fixed;
-  bottom: var(--wp--preset--spacing--40, 32px);
-  right: var(--wp--preset--spacing--40, 32px);
-  z-index: 90;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 14px var(--wp--preset--spacing--30, 24px);
-  min-height: 56px;
-  background: #25D366;
-  color: white;
-  border-radius: 9999px;
-  font-weight: 700;
+  bottom: 24px;
+  right: 24px;
+  max-width: 420px;
+  background: var(--wp--preset--color--teal-primary, #0E2E35);
+  color: var(--wp--preset--color--white, #FFFFFF);
+  padding: 16px 22px;
+  border-radius: 10px;
   font-size: var(--wp--preset--font-size--sm, 14px);
-  text-decoration: none;
-  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
-  transition: all 0.25s ease;
+  line-height: 1.5;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
 }
 
-.m-wa-float:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 12px 32px rgba(37, 211, 102, 0.5);
-  background: #20BD5A;
+.m-toast.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.m-toast--success {
+  background: #0E2E35;
+  border-left: 5px solid var(--wp--preset--color--green-accent, #27AF0A);
+}
+
+.m-toast--error {
+  background: #152023;
+  border-left: 5px solid var(--wp--preset--color--crimson-accent, #E0281D);
 }

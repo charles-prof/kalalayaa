@@ -1,168 +1,121 @@
 /**
  * Kalalayaa Admissions Client Engine
- * Handles live REST API inquiry submission with offline/prototype fallback.
+ *
+ * Handles campus-directed admissions form submissions to the WordPress REST API,
+ * presents toast notifications, and dispatches counselor WhatsApp deep links.
+ *
+ * @package Kalalayaa
+ * @author  CharNithi Software Crafts
  */
-
 (function () {
   'use strict';
-
-  window.kalalayaaOpenAdmissionsFor = function (campusId) {
-    var select = document.getElementById('formCampus');
-    if (select) {
-      select.value = campusId;
-      window.kalalayaaUpdateFormRouting();
-    }
-    var section = document.getElementById('admissions');
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  window.kalalayaaUpdateFormRouting = function () {
-    var select = document.getElementById('formCampus');
-    var preview = document.getElementById('formRoutingPreview');
-    if (!select || !preview) return;
-
-    var config = window.kalalayaaConfig || {};
-    var campuses = config.campuses || {};
-    var campusId = select.value;
-    var c = campuses[campusId] || campuses['kk-nagar'] || {
-      name: 'Kalalayaa KK Nagar',
-      counselor: 'Mrs. Jayanthi Subramanian',
-      email: 'kknagar.admissions@kalalayaaschools.com'
-    };
-
-    preview.innerHTML =
-      '<div>' +
-        '<strong>Smart Routing Active:</strong> ' +
-        'Your application is assigned directly to <strong>' + c.counselor + '</strong> at the ' +
-        '<strong>' + c.name + '</strong> office (' + c.email + '). No delays or misplaced files.' +
-      '</div>';
-    preview.classList.add('is-routed');
-  };
 
   window.kalalayaaHandleAdmissionsSubmit = function (e) {
     e.preventDefault();
 
-    var name     = document.getElementById('parentName').value.trim();
-    var phone    = document.getElementById('parentPhone').value.trim();
-    var child    = document.getElementById('childName').value.trim();
-    var childAge = document.getElementById('childAge').value.trim();
-    var email    = document.getElementById('parentEmail').value.trim();
-    var campusId = document.getElementById('formCampus').value;
-    var program  = document.getElementById('formProgram').value;
-    var notes    = document.getElementById('formNotes').value.trim();
+    var form = e.target;
+    var submitBtn = form.querySelector('.m-campus-inquiry__submit');
+    var parentName = form.querySelector('[name="parent_name"]');
+    var phone = form.querySelector('[name="phone"]');
+    var childName = form.querySelector('[name="child_name"]');
+    var childAge = form.querySelector('[name="child_age"]');
+    var email = form.querySelector('[name="email"]');
+    var campusId = form.querySelector('[name="campus_id"]');
+    var program = form.querySelector('[name="program"]');
+    var notes = form.querySelector('[name="notes"]');
 
-    if (!name || !phone || !child || !childAge) {
-      alert('Please fill in all required fields (Parent Name, Mobile, Child Name, Age).');
+    if (!parentName || !phone || !childName || !childAge) return;
+
+    if (!parentName.value.trim() || !phone.value.trim() || !childName.value.trim() || !childAge.value) {
+      showToast('Please fill in all required fields (Parent Name, Mobile, Child Name, Age).', 'error');
       return;
     }
 
-    var config = window.kalalayaaConfig || {};
-    var campuses = config.campuses || {};
-    var c = campuses[campusId] || campuses['kk-nagar'] || { name: 'Kalalayaa', counselor: 'Counselor', whatsapp: '919443182910' };
-
     var payload = {
-      parent_name: name,
-      phone:       phone,
-      child_name:  child,
-      child_age:   childAge,
-      email:       email,
-      campus_id:   campusId,
-      program:     program,
-      notes:       notes
+      parent_name: parentName.value.trim(),
+      phone: phone.value.trim(),
+      child_name: childName.value.trim(),
+      child_age: childAge.value,
+      email: email ? email.value.trim() : '',
+      campus_id: campusId ? campusId.value : 'kk-nagar',
+      program: program ? program.value.trim() : '',
+      notes: notes ? notes.value.trim() : ''
     };
 
-    var formCard = document.querySelector('.m-inquiry-card');
-    if (formCard) formCard.classList.add('is-submitting');
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting Application...';
+    }
 
-    // 1. Send via WordPress REST API if endpoint is active
-    if (config.restUrl) {
-      fetch(config.restUrl + 'inquire', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-WP-Nonce': config.restNonce || ''
-        },
-        body: JSON.stringify(payload)
+    var config = window.kalalayaaConfig || {};
+    var restUrl = config.restUrl || '/wp-json/kalalayaa/v1/';
+
+    fetch(restUrl + 'inquire', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-WP-Nonce': config.restNonce || ''
+      },
+      body: JSON.stringify(payload)
+    })
+      .then(function (res) {
+        return res.json();
       })
-      .then(function (res) { return res.json(); })
       .then(function (data) {
-        if (formCard) formCard.classList.remove('is-submitting');
-        var refId = data.inquiry_id || ('KL-2026-' + campusId.substring(0,3).toUpperCase() + '-' + Math.floor(100 + Math.random() * 900));
-        showSuccessModal(payload, c, refId);
-        document.getElementById('admissionsForm').reset();
-        window.kalalayaaUpdateFormRouting();
+        if (data.success) {
+          var firstName = payload.parent_name.split(' ')[0];
+          showToast(
+            'Thank you, ' + firstName + '! ' + data.counselor + ' has received your application for ' + data.campus + '. Ref: ' + data.inquiry_id,
+            'success'
+          );
+          form.reset();
+
+          if (data.whatsapp_link) {
+            setTimeout(function () {
+              window.open(
+                data.whatsapp_link +
+                  '?text=' +
+                  encodeURIComponent(
+                    'Hello ' + data.counselor + '! I just submitted an inquiry for my child ' + payload.child_name + ' (Ref: ' + data.inquiry_id + '). Looking forward to visiting ' + data.campus + '!'
+                  ),
+                '_blank'
+              );
+            }, 1800);
+          }
+        } else {
+          showToast(data.message || 'Unable to submit application. Please call admissions directly.', 'error');
+        }
       })
       .catch(function () {
-        // Fallback for local prototype execution
-        if (formCard) formCard.classList.remove('is-submitting');
-        var refId = 'KL-2026-' + campusId.substring(0,3).toUpperCase() + '-' + Math.floor(100 + Math.random() * 900);
-        showSuccessModal(payload, c, refId);
-        document.getElementById('admissionsForm').reset();
-        window.kalalayaaUpdateFormRouting();
+        showToast('Network connection error. Please call +91 94431 82910 directly.', 'error');
+      })
+      .finally(function () {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Submit Admissions Inquiry →';
+        }
       });
-    } else {
-      if (formCard) formCard.classList.remove('is-submitting');
-      var refId = 'KL-2026-' + campusId.substring(0,3).toUpperCase() + '-' + Math.floor(100 + Math.random() * 900);
-      showSuccessModal(payload, c, refId);
-      document.getElementById('admissionsForm').reset();
-      window.kalalayaaUpdateFormRouting();
-    }
   };
 
-  function showSuccessModal(inq, campus, refId) {
-    var modal = document.getElementById('successModal');
-    var body = document.getElementById('successModalBody');
-    if (!modal || !body) return;
+  function showToast(message, type) {
+    var existing = document.querySelector('.m-toast');
+    if (existing) existing.remove();
 
-    var waLink = 'https://wa.me/' + (campus.whatsapp ? campus.whatsapp.replace(/[^0-9]/g, '') : '919443182910') +
-      '?text=' + encodeURIComponent('Hello ' + campus.counselor + ', I just submitted an application for my child ' + inq.child_name + ' (Ref: ' + refId + ').');
+    var toast = document.createElement('div');
+    toast.className = 'm-toast m-toast--' + type;
+    toast.setAttribute('role', 'alert');
+    toast.textContent = message;
+    document.body.appendChild(toast);
 
-    body.innerHTML =
-      '<div style="text-align:center; margin-bottom:24px;">' +
-        '<div style="width:64px; height:64px; border-radius:50%; background:#E6F9E1; color:#27AF0A; display:flex; align-items:center; justify-content:center; margin:0 auto 14px; font-size:28px;">✓</div>' +
-        '<h2 style="font-size:24px; color:#0E2E35; margin-bottom:6px;">Application Received with Warmth</h2>' +
-        '<p style="font-size:14px; color:#4B5563;">Welcome to the Kalalayaa family. We are honoured to be part of your child’s journey.</p>' +
-      '</div>' +
-      '<div style="background:#F4FAFB; border:1px solid #D6E8EB; border-radius:12px; padding:18px; margin-bottom:20px; font-size:14px;">' +
-        '<div style="display:flex; justify-content:space-between; margin-bottom:8px;">' +
-          '<span style="color:#6B7280;">Inquiry Reference:</span>' +
-          '<strong style="font-family:monospace; color:#0E2E35;">' + refId + '</strong>' +
-        '</div>' +
-        '<div style="display:flex; justify-content:space-between; margin-bottom:8px;">' +
-          '<span style="color:#6B7280;">Child:</span>' +
-          '<strong>' + inq.child_name + ' (' + inq.child_age + ')</strong>' +
-        '</div>' +
-        '<div style="display:flex; justify-content:space-between; margin-bottom:8px;">' +
-          '<span style="color:#6B7280;">Target Campus:</span>' +
-          '<strong>' + campus.name + '</strong>' +
-        '</div>' +
-        '<div style="display:flex; justify-content:space-between;">' +
-          '<span style="color:#6B7280;">Assigned Counselor:</span>' +
-          '<strong style="color:#27AF0A;">' + campus.counselor + '</strong>' +
-        '</div>' +
-      '</div>' +
-      '<div style="background:#EEF7F9; border:1px solid #D6E8EB; border-radius:8px; padding:14px; margin-bottom:24px; font-size:13.5px; color:#0E2E35; line-height:1.5;">' +
-        '<strong>Next step:</strong> ' + campus.counselor + ' will reach out within 2 hours to arrange a calm, personal campus walkthrough.' +
-      '</div>' +
-      '<div style="display:flex; gap:10px; flex-wrap:wrap;">' +
-        '<a href="' + waLink + '" target="_blank" rel="noopener noreferrer" style="flex:1; background:#25D366; color:white; text-decoration:none; padding:12px 18px; border-radius:8px; font-weight:700; text-align:center; font-size:14px;">' +
-          'Message Counselor on WhatsApp' +
-        '</a>' +
-        '<button onclick="window.kalalayaaCloseModal(\'successModal\')" style="background:white; border:1px solid #D6E8EB; padding:12px 18px; border-radius:8px; font-weight:600; cursor:pointer;">' +
-          'Close' +
-        '</button>' +
-      '</div>';
+    requestAnimationFrame(function () {
+      toast.classList.add('is-visible');
+    });
 
-    modal.classList.add('is-active');
+    setTimeout(function () {
+      toast.classList.remove('is-visible');
+      setTimeout(function () {
+        toast.remove();
+      }, 350);
+    }, 6000);
   }
-
-  document.addEventListener('DOMContentLoaded', function () {
-    var form = document.getElementById('admissionsForm');
-    if (form) {
-      form.addEventListener('submit', window.kalalayaaHandleAdmissionsSubmit);
-      window.kalalayaaUpdateFormRouting();
-    }
-  });
 })();

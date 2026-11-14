@@ -1,29 +1,21 @@
 /**
- * SMACSS: Layout - Header & Navigation Strip
+ * SMACSS: Layout - Header & Navigation
+ * Sticky glass blur header with campus dropdown and responsive hamburger.
  */
-
-.l-topbar {
-  background: var(--wp--preset--color--teal-primary, #0E2E35);
-  color: var(--wp--preset--color--white, #FFFFFF);
-  font-size: var(--wp--preset--font-size--sm, 14px);
-  padding-block: 8px;
-}
-
-.l-topbar__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--wp--preset--spacing--20, 16px);
-}
 
 .l-header {
   position: sticky;
   top: 0;
   z-index: 100;
   background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--wp--preset--color--border-subtle, #D6E8EB);
+  transition: box-shadow 0.25s ease;
+}
+
+.l-header.is-scrolled {
+  box-shadow: 0 4px 20px -2px rgba(14, 46, 53, 0.08);
 }
 
 .l-header__inner {
@@ -39,46 +31,207 @@
   align-items: center;
   gap: var(--wp--preset--spacing--20, 16px);
   text-decoration: none;
+  color: inherit;
 }
 
 .l-brand__logo {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   object-fit: contain;
   border-radius: 8px;
 }
 
 .l-brand__name {
+  display: block;
   font-family: var(--wp--preset--font-family--display, 'Playfair Display', serif);
   font-size: var(--wp--preset--font-size--xl, 20px);
   font-weight: 800;
   color: var(--wp--preset--color--teal-primary, #0E2E35);
   line-height: 1.1;
+  letter-spacing: -0.01em;
 }
 
 .l-brand__tagline {
+  display: block;
   font-size: var(--wp--preset--font-size--xs, 12px);
   color: var(--wp--preset--color--teal-muted, #2A4F5A);
   margin-top: 2px;
 }
 
-/* Campus Fast Navigation Strip */
-.l-campus-strip {
-  background: white;
-  border-bottom: 1px solid var(--wp--preset--color--border-subtle, #D6E8EB);
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.l-campus-strip::-webkit-scrollbar {
-  display: none;
-}
-
-.l-campus-strip__list {
+.l-nav {
   display: flex;
   align-items: center;
-  gap: var(--wp--preset--spacing--10, 8px);
+}
+
+.l-nav__list {
+  display: flex;
+  align-items: center;
+  gap: var(--wp--preset--spacing--40, 32px);
   list-style: none;
-  padding: 10px var(--wp--preset--spacing--40, 32px);
   margin: 0;
+  padding: 0;
+}
+
+.l-nav__item {
+  position: relative;
+}
+
+.l-nav__link {
+  font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
+  font-size: var(--wp--preset--font-size--sm, 14px);
+  font-weight: 600;
+  color: var(--wp--preset--color--teal-primary, #0E2E35);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 0;
+}
+
+.l-nav__link:hover {
+  color: var(--wp--preset--color--crimson-accent, #E0281D);
+}
+
+.l-nav__link--cta {
+  background: var(--wp--preset--color--teal-primary, #0E2E35);
+  color: var(--wp--preset--color--white, #FFFFFF) !important;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.l-nav__link--cta:hover {
+  background: var(--wp--preset--color--teal-hover, #1B3942);
+  transform: translateY(-1px);
+}
+
+.l-nav__toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.l-nav__chevron {
+  font-size: 11px;
+  transition: transform 0.2s ease;
+}
+
+.l-nav__item--dropdown:hover .l-nav__chevron,
+.l-nav__item--dropdown [aria-expanded="true"] .l-nav__chevron {
+  transform: rotate(180deg);
+}
+
+.l-nav__dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: -20px;
+  background: var(--wp--preset--color--white, #FFFFFF);
+  border: 1px solid var(--wp--preset--color--border-subtle, #D6E8EB);
+  border-radius: 12px;
+  box-shadow: 0 16px 36px -4px rgba(14, 46, 53, 0.12);
+  min-width: 280px;
+  padding: var(--wp--preset--spacing--10, 8px);
+  z-index: 200;
+  list-style: none;
+}
+
+.l-nav__dropdown.is-open {
+  display: block;
+}
+
+.l-nav__dropdown-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--wp--preset--color--teal-primary, #0E2E35);
+  font-size: var(--wp--preset--font-size--sm, 14px);
+  font-weight: 500;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.l-nav__dropdown-link:hover {
+  background: var(--wp--preset--color--teal-tint, #EEF7F9);
+  color: var(--wp--preset--color--teal-primary, #0E2E35);
+}
+
+.l-nav__campus-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--wp--preset--color--teal-tint, #EEF7F9);
+  color: var(--wp--preset--color--teal-muted, #2A4F5A);
+  letter-spacing: 0.02em;
+}
+
+.l-nav__campus-badge--crimson {
+  background: var(--wp--preset--color--crimson-soft, #FDECEA);
+  color: var(--wp--preset--color--crimson-accent, #E0281D);
+}
+
+.l-nav__campus-badge--green {
+  background: var(--wp--preset--color--green-soft, #E6F9E1);
+  color: var(--wp--preset--color--green-accent, #27AF0A);
+}
+
+.l-nav__hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.l-nav__hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--wp--preset--color--teal-primary, #0E2E35);
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+@media (max-width: 899px) {
+  .l-nav__hamburger {
+    display: flex;
+  }
+
+  .l-nav__list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--wp--preset--color--white, #FFFFFF);
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--wp--preset--spacing--30, 24px);
+    border-bottom: 1px solid var(--wp--preset--color--border-subtle, #D6E8EB);
+    box-shadow: 0 16px 32px rgba(14, 46, 53, 0.1);
+    gap: var(--wp--preset--spacing--20, 16px);
+  }
+
+  .l-nav__list.is-open {
+    display: flex;
+  }
+
+  .l-nav__dropdown {
+    position: static;
+    box-shadow: none;
+    border: none;
+    background: var(--wp--preset--color--teal-canvas, #F4FAFB);
+    margin-top: 8px;
+    padding: 8px;
+  }
+
+  .l-nav__dropdown.is-open {
+    display: block;
+  }
 }

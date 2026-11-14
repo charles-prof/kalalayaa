@@ -1,0 +1,157 @@
+/**
+ * SMACSS: Module - Campus Admissions Inquiry Form
+ * Empathetic, direct form submission routed directly to the campus counselor.
+ */
+
+.m-campus-inquiry {
+  padding-block: var(--wp--preset--spacing--100, 80px);
+  background: var(--wp--preset--color--teal-canvas, #F4FAFB);
+  border-top: 1px solid var(--wp--preset--color--border-subtle, #D6E8EB);
+}
+
+.m-campus-inquiry__inner {
+  max-width: 680px;
+  margin-inline: auto;
+}
+
+.m-campus-inquiry__header {
+  text-align: center;
+  margin-bottom: var(--wp--preset--spacing--40, 32px);
+}
+
+.m-campus-inquiry__eyebrow {
+  display: inline-block;
+  font-size: var(--wp--preset--font-size--xs, 12px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--campus-accent, var(--wp--preset--color--teal-primary));
+  margin-bottom: var(--wp--preset--spacing--10, 8px);
+}
+
+.m-campus-inquiry__title {
+  font-size: clamp(26px, 3.5vw, 36px);
+  margin-bottom: var(--wp--preset--spacing--10, 8px);
+}
+
+.m-campus-inquiry__subtitle {
+  font-size: var(--wp--preset--font-size--base, 16px);
+  color: var(--wp--preset--color--teal-muted, #2A4F5A);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.m-campus-inquiry__form {
+  background: var(--wp--preset--color--white, #FFFFFF);
+  border: 1px solid var(--wp--preset--color--border-subtle, #D6E8EB);
+  border-radius: 16px;
+  padding: var(--wp--preset--spacing--40, 32px);
+  box-shadow: 0 4px 20px rgba(14, 46, 53, 0.05);
+}
+
+.m-campus-inquiry__routing {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--wp--preset--color--teal-tint, #EEF7F9);
+  border: 1px solid var(--wp--preset--color--border-subtle, #D6E8EB);
+  border-radius: 10px;
+  padding: var(--wp--preset--spacing--20, 16px);
+  margin-bottom: var(--wp--preset--spacing--30, 24px);
+}
+
+.m-campus-inquiry__routing-icon {
+  font-size: 18px;
+  color: var(--campus-accent, var(--wp--preset--color--teal-primary));
+  flex-shrink: 0;
+}
+
+.m-campus-inquiry__routing-text {
+  font-size: var(--wp--preset--font-size--sm, 14px);
+  color: var(--wp--preset--color--teal-deep, #152023);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.m-campus-inquiry__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--wp--preset--spacing--20, 16px);
+  margin-bottom: var(--wp--preset--spacing--20, 16px);
+}
+
+.m-campus-inquiry__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.m-campus-inquiry__label {
+  font-size: var(--wp--preset--font-size--xs, 12px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--wp--preset--color--teal-primary, #0E2E35);
+}
+
+.m-campus-inquiry__input,
+.m-campus-inquiry__select,
+.m-campus-inquiry__textarea {
+  font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
+  font-size: var(--wp--preset--font-size--sm, 14px);
+  color: var(--wp--preset--color--teal-deep, #152023);
+  background: var(--wp--preset--color--white, #FFFFFF);
+  border: 1px solid var(--wp--preset--color--border-subtle, #D6E8EB);
+  border-radius: 8px;
+  padding: 12px 14px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.m-campus-inquiry__input:focus,
+.m-campus-inquiry__select:focus,
+.m-campus-inquiry__textarea:focus {
+  border-color: var(--campus-accent, var(--wp--preset--color--teal-primary));
+  box-shadow: 0 0 0 3px rgba(14, 46, 53, 0.1);
+}
+
+.m-campus-inquiry__textarea {
+  min-height: 90px;
+  resize: vertical;
+  margin-bottom: var(--wp--preset--spacing--30, 24px);
+}
+
+.m-campus-inquiry__submit {
+  width: 100%;
+  background: var(--campus-accent, var(--wp--preset--color--teal-primary));
+  color: var(--wp--preset--color--white, #FFFFFF);
+  border: none;
+  border-radius: 8px;
+  padding: 16px 24px;
+  font-size: var(--wp--preset--font-size--base, 16px);
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 4px 14px rgba(14, 46, 53, 0.15);
+}
+
+.m-campus-inquiry__submit:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow: 0 8px 20px rgba(14, 46, 53, 0.2);
+}
+
+.m-campus-inquiry__submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@media (max-width: 600px) {
+  .m-campus-inquiry__row {
+    grid-template-columns: 1fr;
+  }
+  .m-campus-inquiry__form {
+    padding: var(--wp--preset--spacing--20, 16px);
+  }
+}

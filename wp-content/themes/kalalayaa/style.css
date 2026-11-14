@@ -4,7 +4,7 @@ Theme URI: https://kalalayaaschools.com/
 Author: CharNithi Software Crafts
 Author URI: https://charnithi.com/
 Description: A bespoke, multi-branch WordPress Full Site Editing (FSE) theme crafted for Kalalayaa Schools & Fine Arts, Tiruchirappalli. Engineered with an 8pt grid, human-readable modular SMACSS architecture, and multisite-ready campus routing.
-Version: 1.0.0
+Version: 2.0.0
 Requires at least: 6.4
 Tested up to: 6.7
 Requires PHP: 8.0
@@ -25,11 +25,6 @@ SMACSS CATEGORIES:
 3. Module   -> assets/css/modules/  (Discrete, reusable UI components)
 4. State    -> assets/css/state/    (Dynamic states: is-active, is-open, etc.)
 5. Theme    -> assets/css/theme/    (Branch-specific color & style overrides)
-
-Colors derived from official logo analysis:
-- Kalalayaa Deep Teal: #0E2E35 (Primary Wordmark)
-- Torch Crimson:       #E0281D (Fine Arts Badge)
-- Grove Green:         #27AF0A (CBSE STEM / Tuition Badge)
 =============================================================================
 */
 
@@ -43,15 +38,24 @@ Colors derived from official logo analysis:
 @import url('assets/css/layout/grid.css');
 @import url('assets/css/layout/header.css');
 @import url('assets/css/layout/footer.css');
+@import url('assets/css/layout/single-post.css');
+@import url('assets/css/layout/archive.css');
 
-/* 3. Module Layer */
-@import url('assets/css/modules/campus-card.css');
-@import url('assets/css/modules/matcher.css');
-@import url('assets/css/modules/counselor.css');
-@import url('assets/css/modules/arts-card.css');
-@import url('assets/css/modules/moments-gallery.css');
-@import url('assets/css/modules/admissions-form.css');
-@import url('assets/css/modules/modal.css');
+/* 3. Module Layer — Hub */
+@import url('assets/css/modules/hub-hero.css');
+@import url('assets/css/modules/doorway-card.css');
+@import url('assets/css/modules/trust.css');
+@import url('assets/css/modules/hub-cta.css');
+
+/* 3. Module Layer — Campus Landing Pages */
+@import url('assets/css/modules/campus-hero.css');
+@import url('assets/css/modules/campus-programs.css');
+@import url('assets/css/modules/campus-contact.css');
+@import url('assets/css/modules/campus-blog.css');
+@import url('assets/css/modules/campus-inquiry.css');
+
+/* 3. Module Layer — Blog & Notification Modules */
+@import url('assets/css/modules/blog-card.css');
 @import url('assets/css/modules/toast.css');
 
 /* 4. State Layer */
@@ -59,5 +63,5 @@ Colors derived from official logo analysis:
 @import url('assets/css/state/is-open.css');
 @import url('assets/css/state/is-routed.css');
 
-/* 5. Theme Layer (Branch Modifiers) */
+/* 5. Theme Layer (Branch Accent Overrides) */
 @import url('assets/css/theme/campuses.css');

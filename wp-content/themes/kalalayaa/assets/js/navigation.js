@@ -1,76 +1,118 @@
 /**
- * Kalalayaa Navigation & Campus Context Engine
- * Zero build-step human-readable vanilla JavaScript.
+ * Kalalayaa Navigation Engine
+ *
+ * Handles campus navigation dropdown, accessible escape listeners,
+ * mobile drawer toggle, and sticky header elevation.
+ *
+ * @package Kalalayaa
+ * @author  CharNithi Software Crafts
  */
-
 (function () {
   'use strict';
 
-  // Toggle Campus Selector Dropdown
-  window.kalalayaaToggleCampusMenu = function (e) {
-    if (e) e.stopPropagation();
-    var selector = document.getElementById('campusSelector');
-    var btn = document.getElementById('campusTriggerBtn');
-    if (!selector) return;
-
-    var isOpen = selector.classList.toggle('is-open');
-    if (btn) btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  };
-
-  // Switch Active Campus Context
-  window.kalalayaaSelectCampus = function (campusId) {
-    var config = window.kalalayaaConfig || {};
-    var campuses = config.campuses || {};
-
-    // Update Strip Buttons
-    var buttons = document.querySelectorAll('.strip-btn');
-    buttons.forEach(function (btn) {
-      var isTarget = btn.getAttribute('data-campus') === campusId;
-      btn.classList.toggle('is-active', isTarget);
-      btn.setAttribute('aria-selected', isTarget ? 'true' : 'false');
-    });
-
-    // Update Header Trigger Label
-    var label = document.getElementById('campusTriggerLabel');
-    if (label) {
-      if (campusId === 'all') {
-        label.textContent = 'All Campuses';
-      } else if (campuses[campusId]) {
-        label.textContent = campuses[campusId].name.replace('Kalalayaa ', '');
-      }
-    }
-
-    // Close Dropdown
-    var selector = document.getElementById('campusSelector');
-    if (selector) selector.classList.remove('is-open');
-
-    // Scroll to or filter campus micro-view if present
-    var microView = document.getElementById('microView');
-    if (microView) {
-      if (campusId === 'all') {
-        microView.classList.remove('is-active');
-      } else {
-        microView.classList.add('is-active');
-        if (typeof window.kalalayaaRenderMicroView === 'function') {
-          window.kalalayaaRenderMicroView(campusId);
-        }
-      }
-    }
-  };
-
-  // Click outside to dismiss menus
-  document.addEventListener('click', function () {
-    var selector = document.getElementById('campusSelector');
-    if (selector && selector.classList.contains('is-open')) {
-      selector.classList.remove('is-open');
-      var btn = document.getElementById('campusTriggerBtn');
-      if (btn) btn.setAttribute('aria-expanded', 'false');
-    }
+  document.addEventListener('DOMContentLoaded', function () {
+    setupDropdowns();
+    setupMobileMenu();
+    setupSmoothScroll();
+    setupStickyHeader();
   });
 
-  // Modal Helpers
-  window.kalalayaaCloseModal = function (modalId) {
-    var modal = document.getElementById(modalId);
-    if (modal) modal.classList.remove('is-active');
-  };
+  function setupDropdowns() {
+    var toggles = document.querySelectorAll('.l-nav__toggle');
+
+    toggles.forEach(function (toggle) {
+      toggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var menuId = toggle.getAttribute('aria-controls');
+        var dropdown = document.getElementById(menuId);
+        var isOpen = toggle.getAttribute('aria-expanded') === 'true';
+
+        closeAllDropdowns();
+
+        if (!isOpen && dropdown) {
+          dropdown.classList.add('is-open');
+          toggle.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', function () {
+      closeAllDropdowns();
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        closeAllDropdowns();
+        closeMobileMenu();
+      }
+    });
+  }
+
+  function closeAllDropdowns() {
+    document.querySelectorAll('.l-nav__dropdown.is-open').forEach(function (d) {
+      d.classList.remove('is-open');
+    });
+    document.querySelectorAll('.l-nav__toggle').forEach(function (t) {
+      t.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  function setupMobileMenu() {
+    var hamburger = document.querySelector('.l-nav__hamburger');
+    var navList = document.querySelector('.l-nav__list');
+    if (!hamburger || !navList) return;
+
+    hamburger.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var isOpen = hamburger.getAttribute('aria-expanded') === 'true';
+      if (isOpen) {
+        closeMobileMenu();
+      } else {
+        navList.classList.add('is-open');
+        hamburger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  }
+
+  function closeMobileMenu() {
+    var hamburger = document.querySelector('.l-nav__hamburger');
+    var navList = document.querySelector('.l-nav__list');
+    if (navList) navList.classList.remove('is-open');
+    if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+  }
+
+  function setupSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+      anchor.addEventListener('click', function (e) {
+        var targetId = anchor.getAttribute('href');
+        if (targetId.length <= 1) return;
+        var target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          closeAllDropdowns();
+          closeMobileMenu();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  }
+
+  function setupStickyHeader() {
+    var header = document.querySelector('.l-header');
+    if (!header) return;
+
+    window.addEventListener(
+      'scroll',
+      function () {
+        if (window.scrollY > 20) {
+          header.classList.add('is-scrolled');
+        } else {
+          header.classList.remove('is-scrolled');
+        }
+      },
+      { passive: true }
+    );
+  }
 })();

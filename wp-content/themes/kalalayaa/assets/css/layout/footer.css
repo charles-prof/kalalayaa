@@ -1,67 +1,125 @@
 /**
  * SMACSS: Layout - Footer
+ * Rich 4-column campus navigation and institutional credentials.
  */
 
 .l-footer {
-  background: var(--wp--preset--color--teal-deep, #152023);
-  color: rgba(255, 255, 255, 0.65);
-  padding-block: var(--wp--preset--spacing--100, 80px) var(--wp--preset--spacing--40, 32px);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--wp--preset--color--teal-primary, #0E2E35);
+  color: var(--wp--preset--color--white, #FFFFFF);
+  padding-block: var(--wp--preset--spacing--80, 64px) var(--wp--preset--spacing--40, 32px);
+  margin-top: auto;
 }
 
-.l-footer-grid {
+.l-footer__grid {
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+  grid-template-columns: 1.5fr 1fr 0.8fr 1.2fr;
   gap: var(--wp--preset--spacing--60, 48px);
-  margin-bottom: var(--wp--preset--spacing--60, 48px);
 }
 
-.l-footer-col h4 {
-  color: var(--wp--preset--color--white, #FFFFFF);
-  font-size: var(--wp--preset--font-size--base, 16px);
-  font-weight: 700;
-  margin-bottom: var(--wp--preset--spacing--20, 16px);
-}
-
-.l-footer-col ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.l-footer-col ul li {
-  margin-bottom: var(--wp--preset--spacing--10, 8px);
-  font-size: var(--wp--preset--font-size--sm, 14px);
-}
-
-.l-footer-col ul li a {
-  color: rgba(255, 255, 255, 0.6);
-  text-decoration: none;
-}
-
-.l-footer-col ul li a:hover {
-  color: var(--wp--preset--color--white, #FFFFFF);
-}
-
-.l-footer-bottom {
-  padding-top: var(--wp--preset--spacing--40, 32px);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+.l-footer__brand {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: var(--wp--preset--font-size--sm, 14px);
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: var(--wp--preset--spacing--20, 16px);
 }
 
-@media (max-width: 1024px) {
-  .l-footer-grid {
+.l-footer__logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  object-fit: contain;
+  background: white;
+  padding: 4px;
+}
+
+.l-footer__brand-name {
+  font-family: var(--wp--preset--font-family--display, 'Playfair Display', serif);
+  font-size: var(--wp--preset--font-size--xl, 20px);
+  font-weight: 700;
+  color: var(--wp--preset--color--white, #FFFFFF);
+  margin: 0;
+}
+
+.l-footer__brand-tagline {
+  font-size: var(--wp--preset--font-size--sm, 14px);
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.l-footer__col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wp--preset--spacing--20, 16px);
+}
+
+.l-footer__heading {
+  font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
+  font-size: var(--wp--preset--font-size--xs, 12px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+.l-footer__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.l-footer__links a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-size: var(--wp--preset--font-size--sm, 14px);
+  transition: color 0.15s ease, padding-left 0.15s ease;
+}
+
+.l-footer__links a:hover {
+  color: var(--wp--preset--color--white, #FFFFFF);
+  padding-left: 4px;
+}
+
+.l-footer__text {
+  font-size: var(--wp--preset--font-size--sm, 14px);
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.l-footer__bottom {
+  margin-top: var(--wp--preset--spacing--60, 48px);
+  padding-top: var(--wp--preset--spacing--30, 24px);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--wp--preset--font-size--xs, 12px);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.l-footer__bottom a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .l-footer__grid {
     grid-template-columns: 1fr 1fr;
+    gap: var(--wp--preset--spacing--40, 32px);
   }
 }
 
-@media (max-width: 640px) {
-  .l-footer-grid {
+@media (max-width: 600px) {
+  .l-footer__grid {
     grid-template-columns: 1fr;
+  }
+  .l-footer__bottom {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
   }
 }

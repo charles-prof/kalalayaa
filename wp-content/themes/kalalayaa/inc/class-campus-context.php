@@ -85,6 +85,13 @@ class Kalalayaa_Context {
 	}
 
 	/**
+	 * Resets the cached campus ID. Used when switching campus context.
+	 */
+	public static function reset() {
+		self::$active_campus_id = null;
+	}
+
+	/**
 	 * Checks if the current view is for a specific campus.
 	 *
 	 * @param string|null $campus_id Optional specific campus ID to match.

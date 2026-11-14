@@ -1,0 +1,170 @@
+/**
+ * SMACSS: Module - Campus Doorway Card
+ * 6 campus doorways respecting Hick's Law and Miller's Law (7±2 rule).
+ */
+
+.m-doorways {
+  padding-block: var(--wp--preset--spacing--100, 80px);
+  background: var(--wp--preset--color--teal-canvas, #F4FAFB);
+}
+
+.m-doorways__header {
+  text-align: center;
+  max-width: 680px;
+  margin-inline: auto;
+  margin-bottom: var(--wp--preset--spacing--60, 48px);
+}
+
+.m-doorways__eyebrow {
+  display: inline-block;
+  font-size: var(--wp--preset--font-size--xs, 12px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--wp--preset--color--teal-muted, #2A4F5A);
+  margin-bottom: var(--wp--preset--spacing--10, 8px);
+}
+
+.m-doorways__title {
+  font-size: clamp(30px, 4vw, 42px);
+  margin-bottom: var(--wp--preset--spacing--20, 16px);
+}
+
+.m-doorways__subtitle {
+  font-size: var(--wp--preset--font-size--base, 16px);
+  color: var(--wp--preset--color--teal-muted, #2A4F5A);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.m-doorways__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--wp--preset--spacing--40, 32px);
+}
+
+.m-doorway-card {
+  background: var(--wp--preset--color--white, #FFFFFF);
+  border: 1px solid var(--wp--preset--color--border-subtle, #D6E8EB);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 2px 8px rgba(14, 46, 53, 0.04);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.m-doorway-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -8px rgba(14, 46, 53, 0.12);
+  border-color: var(--campus-accent, var(--wp--preset--color--teal-primary));
+}
+
+.m-doorway-card__image-wrap {
+  position: relative;
+  height: 210px;
+  overflow: hidden;
+  background: var(--wp--preset--color--teal-tint, #EEF7F9);
+}
+
+.m-doorway-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.m-doorway-card:hover .m-doorway-card__image {
+  transform: scale(1.05);
+}
+
+.m-doorway-card__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: var(--wp--preset--font-size--xs, 12px);
+  font-weight: 700;
+  color: var(--wp--preset--color--teal-primary, #0E2E35);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.m-doorway-card__accent-bar {
+  height: 4px;
+  background: var(--campus-accent, var(--wp--preset--color--teal-primary));
+}
+
+.m-doorway-card__body {
+  padding: var(--wp--preset--spacing--30, 24px);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.m-doorway-card__name {
+  font-family: var(--wp--preset--font-family--display, 'Playfair Display', serif);
+  font-size: var(--wp--preset--font-size--xl, 20px);
+  color: var(--wp--preset--color--teal-primary, #0E2E35);
+  margin-bottom: 6px;
+  transition: color 0.15s ease;
+}
+
+.m-doorway-card:hover .m-doorway-card__name {
+  color: var(--campus-accent, var(--wp--preset--color--teal-primary));
+}
+
+.m-doorway-card__subtitle {
+  font-size: var(--wp--preset--font-size--sm, 14px);
+  color: var(--wp--preset--color--teal-muted, #2A4F5A);
+  line-height: 1.5;
+  margin-bottom: var(--wp--preset--spacing--20, 16px);
+  flex-grow: 1;
+}
+
+.m-doorway-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--wp--preset--font-size--xs, 12px);
+  color: var(--wp--preset--color--teal-muted, #2A4F5A);
+  margin-bottom: var(--wp--preset--spacing--20, 16px);
+  padding-top: var(--wp--preset--spacing--10, 8px);
+  border-top: 1px solid var(--wp--preset--color--border-subtle, #D6E8EB);
+}
+
+.m-doorway-card__dot {
+  opacity: 0.5;
+}
+
+.m-doorway-card__cta {
+  font-size: var(--wp--preset--font-size--sm, 14px);
+  font-weight: 700;
+  color: var(--campus-accent, var(--wp--preset--color--teal-primary));
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: gap 0.2s ease;
+}
+
+.m-doorway-card:hover .m-doorway-card__cta {
+  gap: 8px;
+}
+
+@media (max-width: 960px) {
+  .m-doorways__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .m-doorways__grid {
+    grid-template-columns: 1fr;
+  }
+}

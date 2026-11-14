@@ -1,0 +1,32 @@
+/**
+ * SMACSS: Layout - Archive
+ * 3-column responsive grid for blog archives and campus tag collections.
+ */
+
+.l-archive {
+  padding-block: var(--wp--preset--spacing--60, 48px) var(--wp--preset--spacing--100, 80px);
+}
+
+.l-archive__title {
+  font-size: clamp(32px, 4vw, 44px);
+  margin-bottom: var(--wp--preset--spacing--40, 32px);
+  text-align: center;
+}
+
+.l-archive__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--wp--preset--spacing--40, 32px);
+}
+
+@media (max-width: 900px) {
+  .l-archive__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .l-archive__grid {
+    grid-template-columns: 1fr;
+  }
+}

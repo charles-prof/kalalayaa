@@ -1,0 +1,132 @@
+/**
+ * SMACSS: Module - Campus Programs & Highlights
+ * 2-column storytelling split highlighting campus facilities and pedagogy.
+ */
+
+.m-campus-programs {
+  padding-block: var(--wp--preset--spacing--100, 80px);
+  background: var(--wp--preset--color--white, #FFFFFF);
+}
+
+.m-campus-programs__inner {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: var(--wp--preset--spacing--60, 48px);
+  align-items: center;
+}
+
+.m-campus-programs__eyebrow {
+  display: inline-block;
+  font-size: var(--wp--preset--font-size--xs, 12px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--campus-accent, var(--wp--preset--color--teal-primary));
+  margin-bottom: var(--wp--preset--spacing--10, 8px);
+}
+
+.m-campus-programs__title {
+  font-size: clamp(28px, 3.5vw, 38px);
+  margin-bottom: var(--wp--preset--spacing--20, 16px);
+}
+
+.m-campus-programs__desc {
+  font-size: var(--wp--preset--font-size--base, 16px);
+  line-height: 1.7;
+  color: var(--wp--preset--color--teal-muted, #2A4F5A);
+  margin-bottom: var(--wp--preset--spacing--40, 32px);
+}
+
+.m-campus-programs__features-heading {
+  font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
+  font-size: var(--wp--preset--font-size--sm, 14px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--wp--preset--color--teal-primary, #0E2E35);
+  margin-bottom: var(--wp--preset--spacing--20, 16px);
+}
+
+.m-campus-programs__features {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--wp--preset--spacing--20, 16px);
+}
+
+.m-campus-programs__feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.m-campus-programs__check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--wp--preset--color--green-soft, #E6F9E1);
+  color: var(--wp--preset--color--green-accent, #27AF0A);
+  font-weight: 700;
+  font-size: 13px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.m-campus-programs__feature-text {
+  font-size: var(--wp--preset--font-size--sm, 14px);
+  color: var(--wp--preset--color--teal-deep, #152023);
+  line-height: 1.5;
+}
+
+.m-campus-programs__media {
+  position: relative;
+}
+
+.m-campus-programs__frame {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px -4px rgba(14, 46, 53, 0.12);
+  border: 1px solid var(--wp--preset--color--border-subtle, #D6E8EB);
+  background: var(--wp--preset--color--white, #FFFFFF);
+}
+
+.m-campus-programs__img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  display: block;
+}
+
+.m-campus-programs__caption {
+  padding: var(--wp--preset--spacing--20, 16px);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--wp--preset--color--white, #FFFFFF);
+  border-top: 1px solid var(--wp--preset--color--border-subtle, #D6E8EB);
+}
+
+.m-campus-programs__caption strong {
+  font-size: var(--wp--preset--font-size--sm, 14px);
+  color: var(--wp--preset--color--teal-primary, #0E2E35);
+}
+
+.m-campus-programs__caption span {
+  font-size: var(--wp--preset--font-size--xs, 12px);
+  color: var(--wp--preset--color--teal-muted, #2A4F5A);
+}
+
+@media (max-width: 900px) {
+  .m-campus-programs__inner {
+    grid-template-columns: 1fr;
+    gap: var(--wp--preset--spacing--40, 32px);
+  }
+  .m-campus-programs__img {
+    height: 260px;
+  }
+}

@@ -1,0 +1,83 @@
+/**
+ * SMACSS: Module - Hub Call to Action
+ * High-contrast closing section designed according to the Peak-End rule.
+ */
+
+.m-hub-cta {
+  padding-block: var(--wp--preset--spacing--100, 80px);
+  background: var(--wp--preset--color--teal-primary, #0E2E35);
+  color: var(--wp--preset--color--white, #FFFFFF);
+  text-align: center;
+}
+
+.m-hub-cta__inner {
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.m-hub-cta__eyebrow {
+  display: inline-block;
+  font-size: var(--wp--preset--font-size--xs, 12px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--wp--preset--color--teal-tint, #EEF7F9);
+  margin-bottom: var(--wp--preset--spacing--10, 8px);
+}
+
+.m-hub-cta__title {
+  color: var(--wp--preset--color--white, #FFFFFF);
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: var(--wp--preset--spacing--20, 16px);
+}
+
+.m-hub-cta__subtitle {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: var(--wp--preset--font-size--base, 16px);
+  line-height: 1.6;
+  margin-inline: auto;
+  margin-bottom: var(--wp--preset--spacing--40, 32px);
+  max-width: 58ch;
+}
+
+.m-hub-cta__actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--wp--preset--spacing--20, 16px);
+  flex-wrap: wrap;
+}
+
+.m-hub-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: var(--wp--preset--font-size--sm, 14px);
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.m-hub-cta__btn--primary {
+  background: var(--wp--preset--color--white, #FFFFFF);
+  color: var(--wp--preset--color--teal-primary, #0E2E35);
+}
+
+.m-hub-cta__btn--primary:hover {
+  transform: translateY(-2px);
+  background: var(--wp--preset--color--teal-tint, #EEF7F9);
+  color: var(--wp--preset--color--teal-primary, #0E2E35);
+}
+
+.m-hub-cta__btn--outline {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: var(--wp--preset--color--white, #FFFFFF);
+}
+
+.m-hub-cta__btn--outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--wp--preset--color--white, #FFFFFF);
+  color: var(--wp--preset--color--white, #FFFFFF);
+}
