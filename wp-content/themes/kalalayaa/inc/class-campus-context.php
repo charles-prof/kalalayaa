@@ -61,8 +61,11 @@ class Kalalayaa_Context {
 			return self::$active_campus_id;
 		}
 
-		// 2. Single-Site Mode: Check registered query var
+		// 2. Single-Site Mode: Check registered query var or direct GET parameter
 		$query_campus = get_query_var( 'kalalayaa_campus' );
+		if ( empty( $query_campus ) && isset( $_GET['kalalayaa_campus'] ) ) {
+			$query_campus = sanitize_key( $_GET['kalalayaa_campus'] );
+		}
 		if ( ! empty( $query_campus ) ) {
 			self::$active_campus_id = sanitize_key( $query_campus );
 			return self::$active_campus_id;

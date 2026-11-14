@@ -109,6 +109,18 @@ function kalalayaa_enqueue_scripts() {
 add_action( 'wp_enqueue_scripts', 'kalalayaa_enqueue_scripts' );
 
 /**
+ * Add campus theme context to body classes.
+ */
+function kalalayaa_body_classes( $classes ) {
+	$campus_id = Kalalayaa_Context::get_current_campus_id();
+	if ( $campus_id && 'all' !== $campus_id ) {
+		$classes[] = 'theme-' . esc_attr( $campus_id );
+	}
+	return $classes;
+}
+add_filter( 'body_class', 'kalalayaa_body_classes' );
+
+/**
  * Registers custom rewrite rules for campus micro-sites in Single-Site mode.
  */
 function kalalayaa_register_rewrites() {

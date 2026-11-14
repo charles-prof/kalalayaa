@@ -38,7 +38,7 @@ class Kalalayaa_REST_API {
 		$child_name  = sanitize_text_field( $params['child_name'] ?? '' );
 		$child_age   = sanitize_text_field( $params['child_age'] ?? '' );
 		$email       = sanitize_email( $params['email'] ?? '' );
-		$campus_id   = sanitize_key( $params['campus_id'] ?? 'kk-nagar' );
+		$campus_id   = sanitize_key( $params['campus_id'] ?? ( $params['campus'] ?? 'kk-nagar' ) );
 		$program     = sanitize_text_field( $params['program'] ?? '' );
 		$notes       = sanitize_textarea_field( $params['notes'] ?? '' );
 

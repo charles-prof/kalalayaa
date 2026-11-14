@@ -1,0 +1,18 @@
+# WordPress Core
+wp-admin/
+wp-includes/
+wp-*.php
+index.php
+xmlrpc.php
+license.txt
+readme.html
+wp-config.php
+
+# WP-CLI & Local Binaries
+bin/
+*.phar
+
+# OS & Logs
+.DS_Store
+*.log
+/tmp/
