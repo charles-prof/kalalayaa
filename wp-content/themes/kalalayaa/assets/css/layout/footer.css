@@ -1,0 +1,67 @@
+/**
+ * SMACSS: Layout - Footer
+ */
+
+.l-footer {
+  background: var(--wp--preset--color--teal-deep, #152023);
+  color: rgba(255, 255, 255, 0.65);
+  padding-block: var(--wp--preset--spacing--100, 80px) var(--wp--preset--spacing--40, 32px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.l-footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+  gap: var(--wp--preset--spacing--60, 48px);
+  margin-bottom: var(--wp--preset--spacing--60, 48px);
+}
+
+.l-footer-col h4 {
+  color: var(--wp--preset--color--white, #FFFFFF);
+  font-size: var(--wp--preset--font-size--base, 16px);
+  font-weight: 700;
+  margin-bottom: var(--wp--preset--spacing--20, 16px);
+}
+
+.l-footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.l-footer-col ul li {
+  margin-bottom: var(--wp--preset--spacing--10, 8px);
+  font-size: var(--wp--preset--font-size--sm, 14px);
+}
+
+.l-footer-col ul li a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+}
+
+.l-footer-col ul li a:hover {
+  color: var(--wp--preset--color--white, #FFFFFF);
+}
+
+.l-footer-bottom {
+  padding-top: var(--wp--preset--spacing--40, 32px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--wp--preset--font-size--sm, 14px);
+  flex-wrap: wrap;
+  gap: var(--wp--preset--spacing--20, 16px);
+}
+
+@media (max-width: 1024px) {
+  .l-footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .l-footer-grid {
+    grid-template-columns: 1fr;
+  }
+}

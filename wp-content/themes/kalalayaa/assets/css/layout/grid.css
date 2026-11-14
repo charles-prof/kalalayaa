@@ -1,0 +1,51 @@
+/**
+ * SMACSS: Layout - Grid
+ * Responsive grid layouts for multi-campus cards, fine arts, and forms.
+ */
+
+.l-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--wp--preset--spacing--40, 32px);
+  align-items: center;
+}
+
+.l-grid-campuses {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: var(--wp--preset--spacing--40, 32px);
+}
+
+.l-grid-arts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--wp--preset--spacing--30, 24px);
+}
+
+.l-grid-moments {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: var(--wp--preset--spacing--30, 24px);
+}
+
+.l-grid-admissions {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: var(--wp--preset--spacing--80, 64px);
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .l-grid-2col,
+  .l-grid-admissions {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .l-grid-campuses,
+  .l-grid-arts,
+  .l-grid-moments {
+    grid-template-columns: 1fr;
+  }
+}

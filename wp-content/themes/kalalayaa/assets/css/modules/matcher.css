@@ -1,0 +1,77 @@
+/**
+ * SMACSS: Module - Campus Matcher Tool
+ * Interactive 2-select locator card embedded in Hero section.
+ */
+
+.m-matcher-card {
+  background: var(--wp--preset--color--white, #FFFFFF);
+  border-radius: 24px;
+  border: 1px solid var(--wp--preset--color--border-subtle, #D6E8EB);
+  box-shadow: 0 16px 36px -4px rgba(14, 46, 53, 0.12);
+  padding: var(--wp--preset--spacing--40, 32px);
+  position: relative;
+  overflow: hidden;
+}
+
+.m-matcher-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #E0281D 33%, #0E2E35 33% 66%, #27AF0A 66%);
+}
+
+.m-matcher-card__title {
+  font-family: var(--wp--preset--font-family--display, 'Playfair Display', serif);
+  font-size: var(--wp--preset--font-size--xl, 20px);
+  color: var(--wp--preset--color--teal-primary, #0E2E35);
+  margin-bottom: 4px;
+}
+
+.m-matcher-card__sub {
+  font-size: var(--wp--preset--font-size--sm, 14px);
+  color: var(--wp--preset--color--teal-muted, #2A4F5A);
+  margin-bottom: var(--wp--preset--spacing--30, 24px);
+}
+
+.m-matcher-card__field {
+  margin-bottom: var(--wp--preset--spacing--30, 24px);
+}
+
+.m-matcher-card__label {
+  display: block;
+  font-size: var(--wp--preset--font-size--sm, 14px);
+  font-weight: 600;
+  color: var(--wp--preset--color--teal-primary, #0E2E35);
+  margin-bottom: 6px;
+}
+
+.m-matcher-card__select {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px var(--wp--preset--spacing--20, 16px);
+  border: 1.5px solid var(--wp--preset--color--border-subtle, #D6E8EB);
+  border-radius: 8px;
+  font-size: var(--wp--preset--font-size--base, 16px);
+  background: var(--wp--preset--color--teal-canvas, #F4FAFB);
+  color: var(--wp--preset--color--teal-primary, #0E2E35);
+  outline: none;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.m-matcher-card__select:focus {
+  border-color: var(--wp--preset--color--teal-primary, #0E2E35);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(14, 46, 53, 0.1);
+}
+
+.m-matcher-result {
+  margin-top: var(--wp--preset--spacing--20, 16px);
+  padding: var(--wp--preset--spacing--20, 16px);
+  background: var(--wp--preset--color--teal-tint, #EEF7F9);
+  border: 1px dashed var(--wp--preset--color--border-subtle, #D6E8EB);
+  border-radius: 8px;
+  transition: all 0.25s ease;
+}

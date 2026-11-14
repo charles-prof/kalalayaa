@@ -1,0 +1,48 @@
+/**
+ * SMACSS: Layout - Containers
+ * Section wrappers and page constraint containers following the 8pt system.
+ */
+
+.l-container {
+  max-width: var(--wp--style--global--wide-size, 1200px);
+  margin-inline: auto;
+  padding-inline: var(--wp--preset--spacing--40, 32px);
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .l-container {
+    padding-inline: var(--wp--preset--spacing--20, 16px);
+  }
+}
+
+.l-section {
+  padding-block: var(--wp--preset--spacing--100, 80px);
+}
+
+.l-section--warm {
+  background: var(--wp--preset--color--teal-tint, #EEF7F9);
+  border-top: 1px solid var(--wp--preset--color--border-subtle, #D6E8EB);
+  border-bottom: 1px solid var(--wp--preset--color--border-subtle, #D6E8EB);
+}
+
+.l-section--dark {
+  background: var(--wp--preset--color--teal-deep, #152023);
+  color: var(--wp--preset--color--white, #FFFFFF);
+}
+
+.l-section__header {
+  max-width: 680px;
+  margin: 0 auto var(--wp--preset--spacing--80, 64px);
+  text-align: center;
+}
+
+.l-section__header h2 {
+  margin-block: var(--wp--preset--spacing--20, 16px);
+}
+
+.l-section__header p {
+  color: var(--wp--preset--color--teal-muted, #2A4F5A);
+  font-size: var(--wp--preset--font-size--lg, 18px);
+  margin-inline: auto;
+}

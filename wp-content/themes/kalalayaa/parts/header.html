@@ -1,0 +1,54 @@
+<!-- wp:group {"tagName":"header","className":"l-header","layout":{"type":"constrained"}} -->
+<header class="l-header">
+  <!-- Top Announcement Bar -->
+  <div class="l-topbar">
+    <div class="l-container">
+      <div class="l-topbar__inner">
+        <div>
+          🌸 <strong>Admissions 2026-27 Open</strong> across Srirangam, K.K. Nagar, E-Techno, Cantonment, Crawford & Kailash Nagar.
+        </div>
+        <div>
+          <a href="#admissions" style="color:white; text-decoration:underline;">Book Walkthrough →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Shell -->
+  <div class="l-container">
+    <div class="l-header__inner">
+      <a href="/" class="l-brand" aria-label="Kalalayaa Schools Home">
+        <img class="l-brand__logo" src="/wp-content/themes/kalalayaa/assets/images/logo.jpeg" alt="Kalalayaa Schools" width="48" height="48">
+        <div>
+          <div class="l-brand__name">Kalalayaa</div>
+          <div class="l-brand__tagline">Lighting the Path · Tiruchirappalli</div>
+        </div>
+      </a>
+
+      <!-- Campus Switcher & CTAs -->
+      <div style="display:flex; align-items:center; gap:16px;">
+        <div class="campus-selector" id="campusSelector" style="position:relative;">
+          <button
+            class="strip-btn"
+            id="campusTriggerBtn"
+            onclick="window.kalalayaaToggleCampusMenu(event)"
+            style="min-height:44px; padding:8px 16px; border-radius:9999px; border:1px solid #D6E8EB; background:#F4FAFB; font-weight:600; display:flex; align-items:center; gap:8px;"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+          >
+            <span id="campusTriggerLabel">All Campuses</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+
+        <a href="#admissions" class="wp-element-button" style="background:#0E2E35; color:white; padding:10px 20px; border-radius:8px; text-decoration:none; font-weight:600; font-size:14px;">
+          Apply for Admission
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fast Strip -->
+  <!-- wp:template-part {"slug":"campus-strip","theme":"kalalayaa"} /-->
+</header>
+<!-- /wp:group -->

@@ -1,0 +1,56 @@
+/**
+ * SMACSS: Module - Modal Window
+ * Confirmation dialogs with backdrop blur.
+ */
+
+.m-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(14, 46, 53, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--wp--preset--spacing--30, 24px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.m-modal-box {
+  background: white;
+  border-radius: 24px;
+  max-width: 520px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: var(--wp--preset--spacing--50, 40px);
+  box-shadow: 0 24px 48px -8px rgba(14, 46, 53, 0.2);
+  position: relative;
+  transform: translateY(24px) scale(0.98);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.m-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--wp--preset--color--teal-canvas, #F4FAFB);
+  border: 1px solid var(--wp--preset--color--border-subtle, #D6E8EB);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--wp--preset--color--teal-muted, #2A4F5A);
+  transition: all 0.15s ease;
+}
+
+.m-modal-close:hover {
+  background: var(--wp--preset--color--crimson-soft, #FDECEA);
+  color: var(--wp--preset--color--crimson-accent, #E0281D);
+}

@@ -1,0 +1,40 @@
+/**
+ * SMACSS: Theme - Campus Variations
+ * Declarative color theme overrides for each branch.
+ */
+
+/* Flagship K.K. Nagar */
+.theme-kk-nagar {
+  --campus-accent: #0E2E35;
+  --campus-tint: #EEF7F9;
+}
+
+/* Srirangam Heritage & Classical Arts */
+.theme-srirangam {
+  --campus-accent: #E0281D;
+  --campus-tint: #FDECEA;
+}
+
+/* Kalalayaa E-Techno CBSE STEM */
+.theme-e-techno {
+  --campus-accent: #27AF0A;
+  --campus-tint: #E6F9E1;
+}
+
+/* Cantonment Urban Hub & Daycare */
+.theme-cantonment {
+  --campus-accent: #1B6B78;
+  --campus-tint: #EAF4F6;
+}
+
+/* Crawford Colony Community Campus */
+.theme-crawford {
+  --campus-accent: #A85229;
+  --campus-tint: #FAECE4;
+}
+
+/* Kailash Nagar Athletics & Focus Campus */
+.theme-kailash-nagar {
+  --campus-accent: #5B8C00;
+  --campus-tint: #F4FADC;
+}

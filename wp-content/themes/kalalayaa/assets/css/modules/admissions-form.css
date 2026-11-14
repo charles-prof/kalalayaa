@@ -1,0 +1,97 @@
+/**
+ * SMACSS: Module - Admissions Form
+ * The high-converting smart routed admissions desk.
+ */
+
+.m-inquiry-card {
+  background: var(--wp--preset--color--white, #FFFFFF);
+  border-radius: 24px;
+  border: 1px solid var(--wp--preset--color--border-subtle, #D6E8EB);
+  box-shadow: 0 16px 36px -4px rgba(14, 46, 53, 0.12);
+  padding: var(--wp--preset--spacing--50, 40px);
+}
+
+.m-inquiry-card__title {
+  font-family: var(--wp--preset--font-family--display, 'Playfair Display', serif);
+  font-size: var(--wp--preset--font-size--2xl, 24px);
+  color: var(--wp--preset--color--teal-primary, #0E2E35);
+  margin-bottom: 4px;
+}
+
+.m-inquiry-card__sub {
+  font-size: var(--wp--preset--font-size--sm, 14px);
+  color: var(--wp--preset--color--teal-muted, #2A4F5A);
+  margin-bottom: var(--wp--preset--spacing--40, 32px);
+}
+
+.m-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--wp--preset--spacing--20, 16px);
+}
+
+@media (max-width: 640px) {
+  .m-form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.m-form-group {
+  margin-bottom: var(--wp--preset--spacing--30, 24px);
+}
+
+.m-form-label {
+  display: block;
+  font-size: var(--wp--preset--font-size--sm, 14px);
+  font-weight: 600;
+  color: var(--wp--preset--color--teal-primary, #0E2E35);
+  margin-bottom: 6px;
+}
+
+.m-form-label .req {
+  color: var(--wp--preset--color--crimson-accent, #E0281D);
+  margin-left: 2px;
+}
+
+.m-form-input,
+.m-form-select,
+.m-form-textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px var(--wp--preset--spacing--20, 16px);
+  border: 1.5px solid var(--wp--preset--color--border-subtle, #D6E8EB);
+  border-radius: 8px;
+  font-size: var(--wp--preset--font-size--base, 16px);
+  background: var(--wp--preset--color--teal-canvas, #F4FAFB);
+  color: var(--wp--preset--color--teal-primary, #0E2E35);
+  outline: none;
+  transition: all 0.15s ease;
+}
+
+.m-form-input:focus,
+.m-form-select:focus,
+.m-form-textarea:focus {
+  border-color: var(--wp--preset--color--teal-primary, #0E2E35);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(14, 46, 53, 0.1);
+}
+
+.m-form-textarea {
+  min-height: 88px;
+  resize: vertical;
+}
+
+/* Routing Preview Notice */
+.m-routing-preview {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: var(--wp--preset--spacing--20, 16px);
+  background: var(--wp--preset--color--teal-tint, #EEF7F9);
+  border: 1px solid var(--wp--preset--color--border-subtle, #D6E8EB);
+  border-radius: 8px;
+  font-size: var(--wp--preset--font-size--sm, 14px);
+  color: var(--wp--preset--color--teal-primary, #0E2E35);
+  margin-bottom: var(--wp--preset--spacing--30, 24px);
+  line-height: 1.5;
+}

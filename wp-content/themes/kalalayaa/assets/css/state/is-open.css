@@ -1,0 +1,14 @@
+/**
+ * SMACSS: State - is-open
+ * Handles dropdown menus, navigation drawers, and mobile accordion toggles.
+ */
+
+.campus-selector.is-open .campus-selector__menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.campus-selector.is-open .campus-selector__chevron {
+  transform: rotate(180deg);
+}

@@ -1,0 +1,63 @@
+/*
+Theme Name: Kalalayaa Schools & Fine Arts
+Theme URI: https://kalalayaaschools.com/
+Author: CharNithi Software Crafts
+Author URI: https://charnithi.com/
+Description: A bespoke, multi-branch WordPress Full Site Editing (FSE) theme crafted for Kalalayaa Schools & Fine Arts, Tiruchirappalli. Engineered with an 8pt grid, human-readable modular SMACSS architecture, and multisite-ready campus routing.
+Version: 1.0.0
+Requires at least: 6.4
+Tested up to: 6.7
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: kalalayaa
+Tags: full-site-editing, block-patterns, custom-colors, custom-spacing, editor-style, education, translation-ready
+
+=============================================================================
+KALALAYAA THEME STYLESHEET — SMACSS ARCHITECTURAL MANIFEST
+=============================================================================
+This stylesheet acts as the master index for the theme's modular SMACSS
+architecture. Each layer is cleanly separated and documented for human developers.
+
+SMACSS CATEGORIES:
+1. Base     -> assets/css/base/     (Defaults, typography, elements, CSS vars)
+2. Layout   -> assets/css/layout/   (Major layout shells, containers, grid)
+3. Module   -> assets/css/modules/  (Discrete, reusable UI components)
+4. State    -> assets/css/state/    (Dynamic states: is-active, is-open, etc.)
+5. Theme    -> assets/css/theme/    (Branch-specific color & style overrides)
+
+Colors derived from official logo analysis:
+- Kalalayaa Deep Teal: #0E2E35 (Primary Wordmark)
+- Torch Crimson:       #E0281D (Fine Arts Badge)
+- Grove Green:         #27AF0A (CBSE STEM / Tuition Badge)
+=============================================================================
+*/
+
+/* 1. Base Layer */
+@import url('assets/css/base/reset.css');
+@import url('assets/css/base/typography.css');
+@import url('assets/css/base/elements.css');
+
+/* 2. Layout Layer */
+@import url('assets/css/layout/containers.css');
+@import url('assets/css/layout/grid.css');
+@import url('assets/css/layout/header.css');
+@import url('assets/css/layout/footer.css');
+
+/* 3. Module Layer */
+@import url('assets/css/modules/campus-card.css');
+@import url('assets/css/modules/matcher.css');
+@import url('assets/css/modules/counselor.css');
+@import url('assets/css/modules/arts-card.css');
+@import url('assets/css/modules/moments-gallery.css');
+@import url('assets/css/modules/admissions-form.css');
+@import url('assets/css/modules/modal.css');
+@import url('assets/css/modules/toast.css');
+
+/* 4. State Layer */
+@import url('assets/css/state/is-active.css');
+@import url('assets/css/state/is-open.css');
+@import url('assets/css/state/is-routed.css');
+
+/* 5. Theme Layer (Branch Modifiers) */
+@import url('assets/css/theme/campuses.css');

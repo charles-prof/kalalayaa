@@ -1,0 +1,45 @@
+/**
+ * SMACSS: Base - Typography
+ * Font imports and root typographic rules.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap');
+
+body {
+  font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
+  font-size: var(--wp--preset--font-size--base, 16px);
+  color: var(--wp--preset--color--teal-muted, #2A4F5A);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-display {
+  font-family: var(--wp--preset--font-family--display, 'Playfair Display', serif);
+  color: var(--wp--preset--color--teal-primary, #0E2E35);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+h1 { font-size: var(--wp--preset--font-size--5xl, 48px); font-weight: 800; }
+h2 { font-size: var(--wp--preset--font-size--4xl, 36px); font-weight: 800; }
+h3 { font-size: var(--wp--preset--font-size--3xl, 30px); font-weight: 700; }
+h4 { font-size: var(--wp--preset--font-size--xl, 20px);  font-weight: 600; }
+h5 { font-size: var(--wp--preset--font-size--lg, 18px);  font-weight: 600; }
+
+p {
+  max-width: 72ch;
+  margin-bottom: var(--wp--preset--spacing--30, 24px);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+code,
+pre,
+.ref-id {
+  font-family: var(--wp--preset--font-family--mono, 'JetBrains Mono', monospace);
+}

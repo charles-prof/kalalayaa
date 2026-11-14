@@ -1,0 +1,23 @@
+/**
+ * SMACSS: State - is-routed & has-error
+ * Visual confirmation of deterministic admissions routing.
+ */
+
+.is-routed.m-routing-preview,
+.m-routing-preview.is-routed {
+  border-color: var(--wp--preset--color--teal-primary, #0E2E35);
+  background: white;
+  box-shadow: 0 4px 12px rgba(14, 46, 53, 0.08);
+}
+
+.has-error.m-form-input,
+.has-error.m-form-select {
+  border-color: var(--wp--preset--color--crimson-accent, #E0281D) !important;
+  background: var(--wp--preset--color--crimson-soft, #FDECEA) !important;
+}
+
+.is-submitting button[type="submit"] {
+  opacity: 0.7;
+  pointer-events: none;
+  cursor: wait;
+}
