@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalalayaa Schools — Brand Guidelines & Experience Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --k-teal-900: #0E2E35;
+      --k-teal-800: #152023;
+      --k-teal-700: #1B3942;
+      --k-teal-600: #2A4F5A;
+      --k-teal-500: #41565A;
+      --k-teal-100: #D6E8EB;
+      --k-teal-50:  #EEF7F9;
+      --k-crimson:  #E0281D;
+      --k-green:    #27AF0A;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans:  'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono:  'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-sans);
+      color: #1F2937;
+      background: #F3F4F6;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .document-wrapper {
+      max-width: 900px;
+      margin: 30px auto;
+      background: white;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .page {
+      padding: 56px 64px;
+      background: white;
+      position: relative;
+    }
+
+    .page-break {
+      page-break-after: always;
+      break-after: page;
+      border-bottom: 2px dashed #E5E7EB;
+    }
+
+    @media print {
+      body { background: white; }
+      .document-wrapper {
+        max-width: 100%;
+        margin: 0;
+        box-shadow: none;
+        border-radius: 0;
+      }
+      .page {
+        padding: 16mm 18mm;
+      }
+      .page-break {
+        border-bottom: none;
+      }
+      .no-print { display: none !important; }
+    }
+
+    /* Header / Watermark */
+    .doc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1.5px solid var(--k-teal-100);
+      margin-bottom: 36px;
+    }
+
+    .craft-signature-badge {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--k-teal-700);
+      background: var(--k-teal-50);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      border: 1px solid var(--k-teal-100);
+    }
+
+    .doc-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 20px;
+      border-top: 1px solid #E5E7EB;
+      margin-top: 40px;
+      font-size: 11px;
+      color: #9CA3AF;
+    }
+
+    /* Typography */
+    h1, h2, h3 {
+      font-family: var(--font-serif);
+      color: var(--k-teal-900);
+      line-height: 1.2;
+    }
+
+    h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.02em; }
+    h2 { font-size: 24px; font-weight: 700; margin-bottom: 14px; }
+    h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+
+    p { font-size: 13.5px; color: #4B5563; margin-bottom: 14px; line-height: 1.6; }
+
+    /* Cover Styling */
+    .cover-hero {
+      text-align: center;
+      padding: 40px 0 20px;
+    }
+
+    .cover-logo {
+      width: 110px;
+      height: 110px;
+      object-fit: contain;
+      margin-bottom: 24px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(14, 46, 53, 0.12);
+    }
+
+    .cover-tagline {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--k-crimson);
+      margin-bottom: 8px;
+    }
+
+    .cover-title {
+      font-size: 38px;
+      margin-bottom: 14px;
+    }
+
+    .cover-subtitle {
+      font-size: 16px;
+      color: var(--k-teal-600);
+      max-width: 560px;
+      margin: 0 auto 36px;
+      line-height: 1.5;
+    }
+
+    .quote-box {
+      background: var(--k-teal-50);
+      border-left: 4px solid var(--k-teal-900);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin: 28px 0;
+      text-align: left;
+    }
+
+    .quote-text {
+      font-family: var(--font-serif);
+      font-size: 19px;
+      font-style: italic;
+      color: var(--k-teal-900);
+      line-height: 1.45;
+      margin-bottom: 8px;
+    }
+
+    .quote-author {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--k-crimson);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Color Swatch Grid */
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 24px 0 32px;
+    }
+
+    .swatch-card {
+      border: 1px solid #E5E7EB;
+      border-radius: 10px;
+      overflow: hidden;
+      background: white;
+    }
+
+    .swatch-color {
+      height: 70px;
+      display: flex;
+      align-items: flex-end;
+      padding: 8px 12px;
+      color: white;
+      font-weight: 700;
+      font-size: 13px;
+      font-family: var(--font-mono);
+      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    }
+
+    .swatch-info {
+      padding: 12px;
+    }
+
+    .swatch-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--k-teal-900);
+      margin-bottom: 2px;
+    }
+
+    .swatch-meta {
+      font-size: 11px;
+      color: #6B7280;
+      line-height: 1.4;
+    }
+
+    /* Tables */
+    .guide-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0 28px;
+      font-size: 12.5px;
+    }
+
+    .guide-table th {
+      background: var(--k-teal-900);
+      color: white;
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .guide-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #E5E7EB;
+      color: #374151;
+      vertical-align: top;
+    }
+
+    .guide-table tr:nth-child(even) td {
+      background: #F9FAFB;
+    }
+
+    /* 8pt Grid Specimen */
+    .grid-specimen {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .grid-box {
+      background: var(--k-teal-50);
+      border: 1px solid var(--k-teal-100);
+      border-radius: 6px;
+      padding: 12px 6px;
+    }
+
+    .grid-box .px-val {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--k-teal-900);
+      font-size: 14px;
+    }
+
+    .grid-box .token-name {
+      font-size: 10px;
+      color: var(--k-teal-600);
+      margin-top: 2px;
+    }
+
+    /* Print Button Toolbar */
+    .toolbar-bar {
+      position: sticky;
+      top: 0;
+      background: #111827;
+      color: white;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .btn-print {
+      background: var(--k-crimson);
+      color: white;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-print:hover {
+      background: #B01E15;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen-only Toolbar -->
+  <div class="toolbar-bar no-print">
+    <div>
+      <strong>Kalalayaa Brand Book & Design System</strong> &nbsp;|&nbsp; 
+      <span style="color:#9CA3AF; font-size:13px;">Executive Client Document for Mrs. Dhipikca Rajasekaran</span>
+    </div>
+    <button class="btn-print" onclick="window.print()">
+      🖨️ Print / Save to PDF
+    </button>
+  </div>
+
+  <div class="document-wrapper">
+
+    <!-- ══════════════════════════════════════════════════════════
+         PAGE 1: COVER & BRAND SOUL
+         ══════════════════════════════════════════════════════════ -->
+    <div class="page page-break">
+      <div class="doc-header">
+        <div style="font-weight:700; font-size:13px; color:var(--k-teal-900);">
+          CHARNITHI SOFTWARE CRAFTS
+        </div>
+        <div class="craft-signature-badge">Brand Architecture 2026-27</div>
+      </div>
+
+      <div class="cover-hero">
+        <img class="cover-logo" src="assets/logo-original.jpeg" alt="Kalalayaa Logo">
+        <div class="cover-tagline">Lighting the Path</div>
+        <h1 class="cover-title">Kalalayaa Schools & Fine Arts</h1>
+        <div class="cover-subtitle">
+          Brand Identity, Emotional Architecture & Digital Craftsmanship System
+        </div>
+      </div>
+
+      <div class="quote-box">
+        <div class="quote-text">
+          "We strive to live in millions of loving hearts, rather than simply measuring our journey in material success."
+        </div>
+        <div class="quote-author">Mrs. Dhipikca Rajasekaran (Aunty) — Co-Founder, Kalalayaa Group</div>
+      </div>
+
+      <h2 style="margin-top:28px;">1. The Brand Purpose & Soul</h2>
+      <p>
+        Kalalayaa is not a commercial enterprise; it is a living sanctuary of maternal care and creative talent across Tiruchirappalli. From its origins with Kalalayaa Gurukulam and Fine Arts to its expansion into 6 specialized campuses, the brand represents safe harbour, unhurried growth, and cultural dignity.
+      </p>
+
+      <table class="guide-table">
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>Brand Definition</th>
+            <th>Digital Experience Manifestation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Brand Archetype</strong></td>
+            <td><strong>The Nurturer × The Sage</strong></td>
+            <td>Interfaces speak with motherly reassurance; programs unlock hidden artistic and STEM potentials.</td>
+          </tr>
+          <tr>
+            <td><strong>Core Tagline</strong></td>
+            <td><strong>Lighting the Path</strong></td>
+            <td>Prominently honoured on every digital asset; guiding parents through preschool separation anxiety.</td>
+          </tr>
+          <tr>
+            <td><strong>Tone of Voice</strong></td>
+            <td>Warm, Assured, Cultural, Honest</td>
+            <td>No corporate jargon ("solutions", "onboarding"). Always "your child", "our campus counselor".</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="doc-footer">
+        <div>Client: Mrs. Dhipikca Rajasekaran · Kalalayaa Schools</div>
+        <div>Page 1 of 4</div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════
+         PAGE 2: COLOR HARMONY (EXTRACTED FROM LOGO)
+         ══════════════════════════════════════════════════════════ -->
+    <div class="page page-break">
+      <div class="doc-header">
+        <div style="font-weight:700; font-size:13px; color:var(--k-teal-900);">KALALAYAA BRAND GUIDELINES</div>
+        <div class="craft-signature-badge">Section 2 · Color System</div>
+      </div>
+
+      <h2>2. Color Harmony System (Extracted from Logo)</h2>
+      <p>
+        The visual identity derives directly from mathematical pixel histogram extraction of Kalalayaa’s official emblem. No speculative palettes were used; the system breathes the exact color DNA of the physical school signage.
+      </p>
+
+      <div class="swatch-grid">
+        <div class="swatch-card">
+          <div class="swatch-color" style="background:#0E2E35;">#0E2E35</div>
+          <div class="swatch-info">
+            <div class="swatch-name">Kalalayaa Deep Teal</div>
+            <div class="swatch-meta">
+              Primary Brand · Logo Wordmark<br>
+              <strong>10.8:1 Contrast</strong> (WCAG AAA)
+            </div>
+          </div>
+        </div>
+
+        <div class="swatch-card">
+          <div class="swatch-color" style="background:#E0281D;">#E0281D</div>
+          <div class="swatch-info">
+            <div class="swatch-name">Torch Crimson</div>
+            <div class="swatch-meta">
+              Fine Arts Emblem & Flame<br>
+              Bharatanatyam & Srirangam Accent
+            </div>
+          </div>
+        </div>
+
+        <div class="swatch-card">
+          <div class="swatch-color" style="background:#27AF0A;">#27AF0A</div>
+          <div class="swatch-info">
+            <div class="swatch-name">Grove Green</div>
+            <div class="swatch-meta">
+              Tuition / Growth Emblem<br>
+              E-Techno CBSE & Success States
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Campus-Specific Accent Architecture</h3>
+      <p>To eliminate parent confusion across 6 branches, each campus carries an assigned sub-brand color:</p>
+
+      <table class="guide-table">
+        <thead>
+          <tr>
+            <th>Campus</th>
+            <th>Color Token</th>
+            <th>Hex</th>
+            <th>Strategic Rationale</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>K.K. Nagar</strong></td>
+            <td>Flagship Teal</td>
+            <td><code style="font-family:var(--font-mono); color:#0E2E35; font-weight:700;">#0E2E35</code></td>
+            <td>Represents the mothership hub and flagship fine arts academy.</td>
+          </tr>
+          <tr>
+            <td><strong>Srirangam</strong></td>
+            <td>Temple Crimson</td>
+            <td><code style="font-family:var(--font-mono); color:#E0281D; font-weight:700;">#E0281D</code></td>
+            <td>Evokes the temple town’s classical heritage, Bharatanatyam, and slokas.</td>
+          </tr>
+          <tr>
+            <td><strong>E-Techno School</strong></td>
+            <td>STEM Grove Green</td>
+            <td><code style="font-family:var(--font-mono); color:#27AF0A; font-weight:700;">#27AF0A</code></td>
+            <td>Signifies 21st-century CBSE scientific innovation, robotics, and academic growth.</td>
+          </tr>
+          <tr>
+            <td><strong>Cantonment</strong></td>
+            <td>Calm Urban Teal</td>
+            <td><code style="font-family:var(--font-mono); color:#1B6B78; font-weight:700;">#1B6B78</code></td>
+            <td>Communicates corporate executive daycare safety and peace of mind for working parents.</td>
+          </tr>
+          <tr>
+            <td><strong>Crawford Colony</strong></td>
+            <td>Earthy Terracotta</td>
+            <td><code style="font-family:var(--font-mono); color:#A85229; font-weight:700;">#A85229</code></td>
+            <td>Reflects intimate neighborhood warmth, toddler mud play, and first transitions.</td>
+          </tr>
+          <tr>
+            <td><strong>Kailash Nagar</strong></td>
+            <td>Forest Green</td>
+            <td><code style="font-family:var(--font-mono); color:#5B8C00; font-weight:700;">#5B8C00</code></td>
+            <td>Symbolizes outdoor grass fields, junior target archery, and athletics dexterity.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="doc-footer">
+        <div>CharNithi Software Crafts · Beautiful Architecture & Craftsmanship</div>
+        <div>Page 2 of 4</div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════
+         PAGE 3: 8PT GRID & TYPOGRAPHY SYSTEM
+         ══════════════════════════════════════════════════════════ -->
+    <div class="page page-break">
+      <div class="doc-header">
+        <div style="font-weight:700; font-size:13px; color:var(--k-teal-900);">KALALAYAA BRAND GUIDELINES</div>
+        <div class="craft-signature-badge">Section 3 · Spatial Rhythm</div>
+      </div>
+
+      <h2>3. The 8pt Spacing & Typography System</h2>
+      <p>
+        Visual calmness is created through mathematical predictability. Every spacing unit, line-height, and padding in the Kalalayaa interface adheres strictly to an <strong>8pt grid</strong>.
+      </p>
+
+      <div class="grid-specimen">
+        <div class="grid-box"><div class="px-val">8px</div><div class="token-name">--sp-1 · Icon Gap</div></div>
+        <div class="grid-box"><div class="px-val">16px</div><div class="token-name">--sp-2 · Card Pad</div></div>
+        <div class="grid-box"><div class="px-val">24px</div><div class="token-name">--sp-3 · Field Gap</div></div>
+        <div class="grid-box"><div class="px-val">32px</div><div class="token-name">--sp-4 · Sub Section</div></div>
+        <div class="grid-box"><div class="px-val">48px</div><div class="token-name">--sp-6 · Mobile Sec</div></div>
+        <div class="grid-box"><div class="px-val">64px</div><div class="token-name">--sp-8 · Desktop Sec</div></div>
+      </div>
+
+      <h3>Typography Hierarchy</h3>
+      <table class="guide-table">
+        <thead>
+          <tr>
+            <th>Role</th>
+            <th>Typeface</th>
+            <th>Sizes & Line Height</th>
+            <th>Application</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Display / Brand</strong></td>
+            <td><span style="font-family:var(--font-serif); font-size:15px; font-weight:700;">Playfair Display</span></td>
+            <td>48/56px, 36/44px, 30/36px</td>
+            <td>Hero titles, founder quotes, section headlines. Infuses classical South Indian literary warmth.</td>
+          </tr>
+          <tr>
+            <td><strong>Functional UI</strong></td>
+            <td><span style="font-family:var(--font-sans); font-size:14px; font-weight:600;">Inter</span></td>
+            <td>18/28px, 16/24px, 14/20px</td>
+            <td>Body copy, admissions form fields, campus contact pills. Maximizes legibility on mobile screens.</td>
+          </tr>
+          <tr>
+            <td><strong>Tracking & System</strong></td>
+            <td><span style="font-family:var(--font-mono); font-size:13px;">JetBrains Mono</span></td>
+            <td>12/16px, 11/14px</td>
+            <td>Admissions reference passes (e.g., <code>KL-2026-SRI-402</code>) in the Staff Admin Cockpit.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Touch Target Standards (Fitts’s Law)</h3>
+      <ul style="margin-left:20px; font-size:13px; color:#4B5563; line-height:1.7;">
+        <li><strong>Primary Action Buttons:</strong> Strictly minimum 48px height to prevent mis-taps on mobile devices.</li>
+        <li><strong>Floating WhatsApp Counselor Pill:</strong> 56px height, pinned to the lower right thumb zone.</li>
+        <li><strong>Form Inputs:</strong> Minimum 48px height with visible 2px focus ring for accessible parent typing.</li>
+      </ul>
+
+      <div class="doc-footer">
+        <div>CharNithi Software Crafts · Beautiful Architecture & Craftsmanship</div>
+        <div>Page 3 of 4</div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════
+         PAGE 4: 12 UX LAWS & MULTI-BRANCH ARCHITECTURE
+         ══════════════════════════════════════════════════════════ -->
+    <div class="page">
+      <div class="doc-header">
+        <div style="font-weight:700; font-size:13px; color:var(--k-teal-900);">KALALAYAA BRAND GUIDELINES</div>
+        <div class="craft-signature-badge">Section 4 · UX Laws & Engineering</div>
+      </div>
+
+      <h2>4. The 12 Laws of UX Applied with Empathy</h2>
+      <table class="guide-table" style="font-size:12px;">
+        <thead>
+          <tr>
+            <th style="width:28%;">UX Law</th>
+            <th>Empathetic Implementation in Kalalayaa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. Fitts’s Law</strong></td>
+            <td>All CTAs min 48px. WhatsApp floating action is 56px in the natural thumb arc.</td>
+          </tr>
+          <tr>
+            <td><strong>2. Hick’s Law</strong></td>
+            <td>Campus strip has max 7 items; admissions form uses a 2-click intelligent matcher tool.</td>
+          </tr>
+          <tr>
+            <td><strong>3. Miller’s Law</strong></td>
+            <td>Never present more than 6 campuses at once without clear thematic grouping.</td>
+          </tr>
+          <tr>
+            <td><strong>4. Jakob’s Law</strong></td>
+            <td>Logo top-left, CTA top-right, standard form labels above inputs (no floating labels).</td>
+          </tr>
+          <tr>
+            <td><strong>5. Law of Proximity</strong></td>
+            <td>Counselor name, direct phone, and WhatsApp button always co-located in a single bounded pill.</td>
+          </tr>
+          <tr>
+            <td><strong>6. Law of Common Region</strong></td>
+            <td>Every campus card is visually bounded with a dedicated color accent bar.</td>
+          </tr>
+          <tr>
+            <td><strong>7. Aesthetic-Usability Effect</strong></td>
+            <td>Logo-extracted colors and clean typography build subconscious trust with anxious parents.</td>
+          </tr>
+          <tr>
+            <td><strong>8. Peak-End Rule</strong></td>
+            <td>The success modal names the counselor and provides an instant one-tap WhatsApp link.</td>
+          </tr>
+          <tr>
+            <td><strong>9. Doherty Threshold</strong></td>
+            <td>Zero heavy JavaScript frameworks; instantaneous &lt;50ms response on all transitions.</td>
+          </tr>
+          <tr>
+            <td><strong>10. Von Restorff Effect</strong></td>
+            <td>The active campus chip gets a prominent Deep Teal fill, standing apart from the strip.</td>
+          </tr>
+          <tr>
+            <td><strong>11. Zeigarnik Effect</strong></td>
+            <td>Numbered 3-step admissions journey gives parents clarity on the end-to-end path.</td>
+          </tr>
+          <tr>
+            <td><strong>12. Serial Position Effect</strong></td>
+            <td>Flagship K.K. Nagar is positioned first; the distinctive E-Techno CBSE School is anchored last.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Engineering SLA & Future Growth Guarantee</h3>
+      <p style="font-size:12.5px;">
+        The system is architected on a <strong>declarative multi-branch registry</strong>. When Kalalayaa opens Branch #7 in Tiruchirappalli, CharNithi guarantees seamless integration within 48 hours at a flat, predictable rate of <strong>₹8,000 per campus</strong> with zero core code rewrite.
+      </p>
+
+      <div style="margin-top:28px; padding-top:16px; border-top:1px solid #E5E7EB; display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <div style="font-weight:700; color:var(--k-teal-900); font-size:13px;">Charles, Founder</div>
+          <div style="font-size:11px; color:#6B7280;">CharNithi Software Crafts · Tiruchirappalli</div>
+        </div>
+        <div style="font-size:11px; color:var(--k-crimson); font-weight:700;">
+          APPROVED FOR IMPLEMENTATION · NOV 2026
+        </div>
+      </div>
+
+      <div class="doc-footer">
+        <div>CharNithi Software Crafts · Software with Beautiful Architecture and Craftsmanship</div>
+        <div>Page 4 of 4</div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

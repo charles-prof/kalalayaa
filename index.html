@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalalayaa Schools & Fine Arts — Lighting the Path | Tiruchirappalli</title>
+  <meta name="description" content="Tiruchirappalli's cherished chain of nursery, fine arts, and CBSE E-Techno schools across 6 campuses. Founded with love by Mrs. Dhipikca Rajasekaran. Lighting the Path since 2016.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════
+       TOP ANNOUNCEMENT BAR
+       Jakob's Law: persistent top bar is an expected pattern
+       ══════════════════════════════════════════════════════════ -->
+  <div class="top-bar" role="banner">
+    <div class="container">
+      <div class="top-bar__inner">
+        <span class="top-bar__notice">
+          🌸 &nbsp;<strong>Admissions 2026-27 Open</strong> — K.K. Nagar · Srirangam · E-Techno · Cantonment · Crawford · Kailash Nagar
+        </span>
+        <div class="top-bar__actions">
+          <span class="craft-pill">CharNithi Demo</span>
+          <button class="btn btn-sm" style="background:rgba(255,255,255,0.12); color:white; border-color:rgba(255,255,255,0.25); min-height:36px; padding:8px 14px; font-size:13px;" onclick="window.toggleAdmin()">
+            ⚡ Staff Portal
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       STICKY HEADER
+       Jakob's Law: logo top-left, primary CTA top-right
+       Fitts's Law: CTA minimum 48px height
+       ══════════════════════════════════════════════════════════ -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="header__inner">
+
+        <!-- Brand Identity — uses actual logo from nowfloats -->
+        <a class="brand" onclick="window.selectCampus('all')" role="link" aria-label="Kalalayaa Schools Homepage">
+          <img
+            class="brand__logo"
+            src="assets/logo-original.jpeg"
+            alt="Kalalayaa Schools & Fine Arts — Lighting the Path"
+            width="48"
+            height="48"
+          >
+          <div class="brand__text">
+            <div class="brand__name">Kalalayaa</div>
+            <div class="brand__tagline">Lighting the Path · Tiruchirappalli</div>
+          </div>
+        </a>
+
+        <!-- Header Right Actions -->
+        <div class="header__actions">
+
+          <!-- Campus Selector Dropdown -->
+          <!-- Hick's Law: grouped in one dropdown, not 6 separate nav items -->
+          <div class="campus-selector" id="campusSelector">
+            <button
+              class="campus-selector__trigger"
+              onclick="window.toggleCampusMenu(event)"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+              id="campusTriggerBtn"
+            >
+              <span id="campusTriggerLabel">All Campuses</span>
+              <svg class="campus-selector__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+
+            <div class="campus-selector__menu" id="campusMenu" role="listbox" aria-label="Select campus">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <a href="#admissions" class="btn btn-outline" style="min-height:44px; padding:10px 20px; font-size:14px;">
+            Campus Visit
+          </a>
+          <a href="#admissions" class="btn btn-primary" style="min-height:44px; padding:10px 20px; font-size:14px;">
+            Apply Now
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════════
+       CAMPUS FAST STRIP
+       Von Restorff: active campus chip is visually distinct
+       Hick's Law: 7 items max, all scannable in one glance
+       ══════════════════════════════════════════════════════════ -->
+  <nav class="campus-strip" aria-label="Campus quick navigation">
+    <ul class="campus-strip__list" id="campusStripList" role="tablist">
+      <!-- Populated by JS -->
+    </ul>
+  </nav>
+
+  <main>
+    <!-- ════════════════════════════════════════════════════════
+         HERO SECTION
+         Serial Position: most compelling value prop first
+         ════════════════════════════════════════════════════════ -->
+    <section class="hero" aria-labelledby="heroHeadline">
+      <div class="container">
+        <div class="hero__grid">
+
+          <!-- Left: Brand Narrative -->
+          <div class="hero__copy">
+            <div class="hero__eyebrow">
+              <span class="section-eyebrow">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                "Living in millions of loving hearts"
+              </span>
+            </div>
+
+            <h1 class="hero__title" id="heroHeadline">
+              Where Little Hearts Blossom &
+              <em>Young Minds Excel</em>
+            </h1>
+
+            <p class="hero__body">
+              From our gentle toddler nests in Srirangam to our CBSE innovation labs at E-Techno, Kalalayaa gives every child in Tiruchirappalli the warmth of home and the wings to fly.
+            </p>
+
+            <!-- Law of Proximity: CTAs grouped together as one unit -->
+            <div class="hero__ctas">
+              <a href="#campuses" class="btn btn-primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Explore Our 6 Campuses
+              </a>
+              <a href="#admissions" class="btn btn-outline">
+                Book a Warm Campus Visit
+              </a>
+            </div>
+
+            <!-- Law of Proximity + Zeigarnik: 3 trust marks near CTA imply a "complete, safe" picture -->
+            <div class="hero__trust-row" role="list" aria-label="Key trust indicators">
+              <div class="trust-item" role="listitem">
+                <span class="trust-item__check" aria-hidden="true">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                6 Campuses · Trichy
+              </div>
+              <div class="trust-item" role="listitem">
+                <span class="trust-item__check" aria-hidden="true">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                1:8 Motherly Care Ratio
+              </div>
+              <div class="trust-item" role="listitem">
+                <span class="trust-item__check" aria-hidden="true">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                9 Fine Arts Academies
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Campus Matcher -->
+          <!-- Aesthetic-Usability Effect: beautiful card = trustworthy tool -->
+          <div class="matcher-card" role="complementary" aria-label="Campus finder tool">
+            <h2 class="matcher-card__title">Find Your Nearest Campus</h2>
+            <p class="matcher-card__sub">Select your child's age and neighbourhood for a personal recommendation.</p>
+
+            <div class="form-group">
+              <label class="form-label" for="matcherAge">Child's Stage</label>
+              <select class="form-select" id="matcherAge" onchange="window.updateMatcher()">
+                <option value="toddler">Toddler & Playgroup (1.5 – 2.5 Yrs)</option>
+                <option value="kindergarten" selected>Pre-KG, LKG & UKG (2.5 – 5.5 Yrs)</option>
+                <option value="cbse">CBSE Primary & Middle School (Gr. 1–8)</option>
+                <option value="arts">Fine Arts & Hobby Classes (Ages 4–18)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="matcherLocality">Your Neighbourhood</label>
+              <select class="form-select" id="matcherLocality" onchange="window.updateMatcher()">
+                <option value="srirangam">Srirangam / North Chithirai / Ranga Nagar</option>
+                <option value="kknagar" selected>K.K. Nagar / Sundar Nagar / Airport Road</option>
+                <option value="cantonment">Cantonment / Thillai Nagar / Collectorate</option>
+                <option value="crawford">Crawford Colony / Edamalaipatti</option>
+                <option value="kailash">Kailash Nagar / Kattur / BHEL Area</option>
+                <option value="etechno">Anywhere in Trichy (CBSE / STEM focus)</option>
+              </select>
+            </div>
+
+            <div class="matcher-result" id="matcherResult" role="region" aria-live="polite" aria-label="Recommended campus">
+              <!-- Updated dynamically -->
+            </div>
+          </div>
+
+        </div><!-- /.hero__grid -->
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         CAMPUS MICRO-VIEW (shown when a campus is selected)
+         Law of Common Region: contained bounded detail view
+         ════════════════════════════════════════════════════════ -->
+    <div class="container">
+      <div class="micro-view" id="microView" role="region" aria-label="Campus detail view">
+        <!-- Populated by JS on campus selection -->
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════
+         CAMPUSES GRID
+         Miller's Law: 6 campuses = within 7±2 capacity
+         Serial Position: Flagship first, E-Techno (most distinct) sixth
+         ════════════════════════════════════════════════════════ -->
+    <section class="section" id="campuses" aria-labelledby="campusesHeading">
+      <div class="container">
+        <div class="section__header">
+          <span class="section-eyebrow">Our Trichy Network</span>
+          <h2 id="campusesHeading">One Caring Vision. Six Vibrant Campuses.</h2>
+          <p>
+            Whether your child is taking first toddler steps in Srirangam, discovering Bharatanatyam in K.K. Nagar, or building robots at E-Techno — we have a home for them in Trichy.
+          </p>
+        </div>
+
+        <div class="campuses-grid" id="campusesGrid" role="list" aria-label="Campus cards">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         FOUNDER ETHOS
+         Peak-End Rule: founder's words are the emotional peak
+         ════════════════════════════════════════════════════════ -->
+    <section class="section section--warm" aria-labelledby="founderHeading">
+      <div class="container">
+        <div class="founder-card">
+
+          <!-- Portrait & Identity -->
+          <div class="founder-card__portrait-col">
+            <div class="founder-card__portrait" aria-hidden="true">D</div>
+            <div class="founder-card__name">Mrs. Dhipikca Rajasekaran</div>
+            <div class="founder-card__title">Co-Founder, Kalalayaa Group of Schools</div>
+            <div class="founder-card__nick">Affectionately known across Trichy as "Aunty"</div>
+          </div>
+
+          <!-- Vision & Pillars -->
+          <div>
+            <h2 id="founderHeading" class="visually-hidden">Our Founder's Vision</h2>
+            <blockquote class="founder-card__quote">
+              We strive to live in millions of loving hearts, rather than simply measuring our journey in material success.
+            </blockquote>
+
+            <p class="founder-card__body">
+              From the early days of Kalalayaa Gurukulam and Fine Arts, our mission has been simple: awaken the hidden talents of every child, support our devoted women teachers, and provide a sanctuary where children feel truly cherished — every single day.
+            </p>
+
+            <div class="pillars-row" role="list" aria-label="Core pillars">
+              <div class="pillar-box" role="listitem">
+                <div class="pillar-box__title">Maternal Warmth</div>
+                <div class="pillar-box__body">Gentle transitions, low child-teacher ratios, and caregivers who embrace every emotion.</div>
+              </div>
+              <div class="pillar-box" role="listitem">
+                <div class="pillar-box__title">Fine Arts Heritage</div>
+                <div class="pillar-box__body">Classical dance, Carnatic music, theater, and chess honouring Tamil culture.</div>
+              </div>
+              <div class="pillar-box" role="listitem">
+                <div class="pillar-box__title">Future-Ready STEM</div>
+                <div class="pillar-box__body">CBSE excellence with robotics, mental mathematics, and scientific curiosity.</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         FINE ARTS ACADEMY
+         ════════════════════════════════════════════════════════ -->
+    <section class="section" id="fine-arts" aria-labelledby="artsHeading">
+      <div class="container">
+        <div class="section__header">
+          <span class="section-eyebrow">Kalalayaa Fine Arts Academy</span>
+          <h2 id="artsHeading">Nurturing the Artist & Thinker Within</h2>
+          <p>
+            Beyond academics, every child carries a unique creative genius. Our weekend and evening academies offer professional mentorship across 9 disciplines — from Bharatanatyam to Robotics.
+          </p>
+        </div>
+
+        <div class="arts-grid" id="artsGrid" role="list" aria-label="Fine arts disciplines">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         MOMENTS OF JOY GALLERY
+         Authentic photography of children, performances & classes
+         ════════════════════════════════════════════════════════ -->
+    <section class="section" id="gallery" aria-labelledby="galleryHeading">
+      <div class="container">
+        <div class="section__header">
+          <span class="section-eyebrow">Life at Kalalayaa</span>
+          <h2 id="galleryHeading">Moments of Joy & Cultural Awakening</h2>
+          <p>
+            Real classrooms, real performances, and the genuine warmth of our children and teachers across Tiruchirappalli.
+          </p>
+        </div>
+
+        <div class="moments-grid" id="momentsGrid" role="list" aria-label="Authentic campus photo moments">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         ADMISSIONS SECTION
+         Hick's Law: 3-step process reduces decision paralysis
+         Zeigarnik: numbered steps imply completable journey
+         Peak-End: form confirmation is the emotional peak
+         ════════════════════════════════════════════════════════ -->
+    <section class="section section--warm" id="admissions" aria-labelledby="admissionsHeading">
+      <div class="container">
+        <div class="section__header" style="max-width:720px;">
+          <span class="section-eyebrow">Admissions 2026-27</span>
+          <h2 id="admissionsHeading">A Stress-Free Admissions Journey</h2>
+          <p>Your inquiry is instantly routed to the right campus counselor — no mixed-up emails, no waiting for a generic support team.</p>
+        </div>
+
+        <div class="admissions-layout">
+
+          <!-- Left: Process Steps -->
+          <div>
+            <ol class="steps-list" aria-label="Admissions process steps">
+              <li class="step-item">
+                <div class="step-item__num" aria-label="Step 1">1</div>
+                <div>
+                  <div class="step-item__title">Submit Your Campus Application</div>
+                  <div class="step-item__desc">Select your child's preferred campus and program. Our deterministic routing sends your details directly to that campus's head counselor — not to a generic inbox.</div>
+                </div>
+              </li>
+              <li class="step-item">
+                <div class="step-item__num" aria-label="Step 2">2</div>
+                <div>
+                  <div class="step-item__title">Personal Campus Walkthrough</div>
+                  <div class="step-item__desc">Your counselor arranges a calm, pressure-free visit where your child explores the play zones and meets their future teachers at their own pace.</div>
+                </div>
+              </li>
+              <li class="step-item">
+                <div class="step-item__num" aria-label="Step 3">3</div>
+                <div>
+                  <div class="step-item__title">Gentle Orientation & Transition</div>
+                  <div class="step-item__desc">We provide gradual separation support, a child readiness kit, and direct parent-teacher communication from Day 1. Your child is never rushed.</div>
+                </div>
+              </li>
+            </ol>
+
+            <div style="background:white; border-radius:16px; padding:24px; border:1px solid var(--k-teal-100); margin-top:32px;">
+              <div style="font-weight:700; color:var(--k-teal-900); margin-bottom:4px;">Need Immediate Guidance?</div>
+              <div style="font-size:var(--text-sm); color:var(--color-text-muted); margin-bottom:14px);">Call our central parent helpline or message on WhatsApp:</div>
+              <a href="tel:+919443182910" style="font-weight:800; color:var(--k-teal-900); text-decoration:none; font-size:var(--text-xl); display:flex; align-items:center; gap:8px; margin-top:12px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                +91 94431 82910
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: Inquiry Form -->
+          <div class="inquiry-form-card">
+            <h3 class="inquiry-form-card__title">Online Admissions Desk</h3>
+            <p class="inquiry-form-card__sub">Fill in the details below. Your application is personally acknowledged within 2 hours.</p>
+
+            <form id="admissionsForm" novalidate>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="parentName">
+                    Parent / Guardian Name <span class="req" aria-label="required">*</span>
+                  </label>
+                  <input type="text" id="parentName" class="form-input" placeholder="e.g. Mrs. Lakshmi Ram" required autocomplete="name">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="parentPhone">
+                    Mobile / WhatsApp <span class="req" aria-label="required">*</span>
+                  </label>
+                  <input type="tel" id="parentPhone" class="form-input" placeholder="e.g. 98424 00000" required autocomplete="tel">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="childName">
+                    Child's Full Name <span class="req" aria-label="required">*</span>
+                  </label>
+                  <input type="text" id="childName" class="form-input" placeholder="e.g. Ananya Ram" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="childAge">
+                    Child's Age <span class="req" aria-label="required">*</span>
+                  </label>
+                  <input type="text" id="childAge" class="form-input" placeholder="e.g. 3.5 Years" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="parentEmail">Email Address <span style="color:var(--color-text-hint); font-weight:400;">(optional)</span></label>
+                <input type="email" id="parentEmail" class="form-input" placeholder="e.g. parent@example.com" autocomplete="email">
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="formCampus">
+                    Target Campus <span class="req" aria-label="required">*</span>
+                  </label>
+                  <select id="formCampus" class="form-select" required onchange="window.updateFormRouting()">
+                    <!-- Populated by JS -->
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="formProgram">
+                    Program of Interest <span class="req" aria-label="required">*</span>
+                  </label>
+                  <select id="formProgram" class="form-select">
+                    <option value="Toddler Playgroup">Toddler Playgroup (1.5–2.5 Yrs)</option>
+                    <option value="Pre-KG / Nursery" selected>Pre-KG & Nursery (2.5–3.5 Yrs)</option>
+                    <option value="LKG / UKG Foundations">LKG / UKG (3.5–5.5 Yrs)</option>
+                    <option value="CBSE Grade 1–8">CBSE Grade 1–8 (E-Techno)</option>
+                    <option value="Fine Arts (Dance / Music / Art)">Fine Arts — Dance, Vocal, Art</option>
+                    <option value="Robotics, Chess & STEM">Robotics, Speedcubing & Chess</option>
+                    <option value="Executive Daycare Sanctuary">Daycare Sanctuary</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Smart Routing Preview — real-time feedback -->
+              <div class="routing-preview" id="formRoutingPreview" role="status" aria-live="polite">
+                <!-- Populated by JS -->
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="formNotes">Special Notes or Questions</label>
+                <textarea id="formNotes" class="form-textarea" placeholder="e.g. Looking for school bus from Thillai Nagar or afternoon daycare…"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width:100%;">
+                Send My Child's Application
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         PARENT TESTIMONIALS
+         Aesthetic-Usability Effect: polished cards = trust
+         ════════════════════════════════════════════════════════ -->
+    <section class="section" id="testimonials" aria-labelledby="testimonialsHeading">
+      <div class="container">
+        <div class="section__header">
+          <span class="section-eyebrow">Parent Community Voices</span>
+          <h2 id="testimonialsHeading">Loved by Trichy Families</h2>
+          <p>Real stories of care, confidence, and talent awakening from our campus parents.</p>
+        </div>
+
+        <div class="testimonials-grid" id="testimonialsGrid" role="list" aria-label="Parent testimonials">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         STAFF ADMIN COCKPIT (toggled by staff)
+         ════════════════════════════════════════════════════════ -->
+    <section class="admin-section" id="adminCockpit" style="display:none;" aria-label="Staff Admin Cockpit">
+      <div class="container">
+
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:24px; margin-bottom:40px;">
+          <div>
+            <span class="badge badge-green" style="margin-bottom:12px;">Unified Administrative Portal</span>
+            <h2 style="margin-bottom:6px;">Kalalayaa Staff Admissions Cockpit</h2>
+            <p class="text-muted text-sm">Single-view dashboard for Mrs. Dhipikca Rajasekaran & campus admissions coordinators across all 6 Trichy campuses.</p>
+          </div>
+          <button class="btn btn-outline" style="background:rgba(255,255,255,0.08); color:rgba(255,255,255,0.7); border-color:rgba(255,255,255,0.2);" onclick="window.toggleAdmin()">
+            ✕ Exit Staff Portal
+          </button>
+        </div>
+
+        <!-- KPI Metrics -->
+        <div class="admin-stats" role="list" aria-label="Admissions metrics">
+          <div class="admin-stat" role="listitem">
+            <div class="admin-stat__label">Total Inquiries</div>
+            <div class="admin-stat__number" id="statTotal">0</div>
+            <div class="admin-stat__note">Across all 6 campuses</div>
+          </div>
+          <div class="admin-stat" role="listitem">
+            <div class="admin-stat__label">New — Pending Action</div>
+            <div class="admin-stat__number" id="statNew" style="color:#5FE040;">0</div>
+            <div class="admin-stat__note">Awaiting counselor callback</div>
+          </div>
+          <div class="admin-stat" role="listitem">
+            <div class="admin-stat__label">Enrollment Rate</div>
+            <div class="admin-stat__number" id="statRate" style="color:#67E8F9;">0%</div>
+            <div class="admin-stat__note">Successfully admitted</div>
+          </div>
+          <div class="admin-stat" role="listitem">
+            <div class="admin-stat__label">Multi-Branch Sync</div>
+            <div class="admin-stat__number" style="font-size:28px; color:#A5B4FC; padding-top:8px;">6 Live</div>
+            <div class="admin-stat__note">All branches routing correctly</div>
+          </div>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="admin-filter-row">
+          <div class="admin-tabs" role="tablist" aria-label="Filter inquiries">
+            <button class="admin-tab active" role="tab" data-filter="all" onclick="window.filterAdmin('all')">All Inquiries</button>
+            <button class="admin-tab" role="tab" data-filter="New" onclick="window.filterAdmin('New')">New Leads</button>
+            <button class="admin-tab" role="tab" data-filter="Contacted" onclick="window.filterAdmin('Contacted')">Contacted</button>
+            <button class="admin-tab" role="tab" data-filter="Enrolled" onclick="window.filterAdmin('Enrolled')">Enrolled</button>
+          </div>
+          <span class="text-sm" style="color:rgba(255,255,255,0.4);">
+            💡 Change status dropdown in table to simulate live database update
+          </span>
+        </div>
+
+        <!-- Inquiries Table -->
+        <div class="admin-table-wrap" role="region" aria-label="Admissions inquiry table">
+          <table class="admin-table" aria-label="Admissions inquiries">
+            <thead>
+              <tr>
+                <th scope="col">Ref ID</th>
+                <th scope="col">Parent Details</th>
+                <th scope="col">Child Info</th>
+                <th scope="col">Campus & Program</th>
+                <th scope="col">Assigned Counselor</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody id="adminTableBody">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ════════════════════════════════════════════════════════
+       FOOTER
+       ════════════════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-col">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+            <img src="assets/logo-original.jpeg" alt="Kalalayaa Logo" width="40" height="40" style="border-radius:8px; object-fit:contain;">
+            <strong style="color:white; font-size:var(--text-lg); font-family:var(--font-display);">Kalalayaa Schools</strong>
+          </div>
+          <p style="font-size:var(--text-sm); line-height:1.65; margin-bottom:14px;">
+            Tiruchirappalli's dedicated chain of early childhood sanctuaries, fine arts academies, and CBSE E-Techno schools. Dedicated to living in millions of loving hearts.
+          </p>
+          <div style="font-size:var(--text-sm);">
+            <strong style="color:white;">Central Helpline:</strong> +91 94431 82910
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Our 6 Campuses</h4>
+          <ul>
+            <li><a href="#campuses" onclick="window.selectCampus('kk-nagar')">K.K. Nagar — Flagship Hub</a></li>
+            <li><a href="#campuses" onclick="window.selectCampus('srirangam')">Srirangam — Heritage Arts</a></li>
+            <li><a href="#campuses" onclick="window.selectCampus('e-techno')">E-Techno School — CBSE STEM</a></li>
+            <li><a href="#campuses" onclick="window.selectCampus('cantonment')">Cantonment — Urban & Daycare</a></li>
+            <li><a href="#campuses" onclick="window.selectCampus('crawford')">Crawford Colony — Nursery</a></li>
+            <li><a href="#campuses" onclick="window.selectCampus('kailash-nagar')">Kailash Nagar — Athletics & Arts</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Programs</h4>
+          <ul>
+            <li><a href="#admissions">Toddler Playgroup & Pre-KG</a></li>
+            <li><a href="#admissions">LKG & UKG Foundations</a></li>
+            <li><a href="#admissions">CBSE Primary & Middle School</a></li>
+            <li><a href="#fine-arts">Classical Bharatanatyam</a></li>
+            <li><a href="#fine-arts">Carnatic Vocal & Slokas</a></li>
+            <li><a href="#fine-arts">Speedcubing & Chess Academy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>CharNithi Software Crafts</h4>
+          <p style="font-size:var(--text-sm); line-height:1.6; margin-bottom:14px;">
+            This unified digital workspace was designed and engineered for Mrs. Dhipikca Rajasekaran and the Kalalayaa team.
+          </p>
+          <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-left:3px solid var(--k-teal-100); padding:14px; border-radius:var(--radius-sm); font-size:var(--text-xs); line-height:1.6;">
+            <strong style="color:white;">Software with Beautiful Architecture and Craftsmanship.</strong><br>
+            Future branches: flat <span style="color:var(--k-teal-100);">₹8,000/campus</span> — no rework, no surprises.
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Kalalayaa Schools & Chain of Nursery and Fine Arts. All rights reserved.</div>
+        <div>Crafted with care by <span class="footer-craft">CharNithi Software Crafts</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ════════════════════════════════════════════════════════
+       FLOATING WHATSAPP BUTTON
+       Fitts's Law: 56px height, corner placement = easy to reach
+       Peak-End: this is the last touchpoint — make it warm
+       ════════════════════════════════════════════════════════ -->
+  <a
+    href="https://wa.me/919443182910?text=Hello%20Kalalayaa%20Admissions%20Desk!%20I%20would%20like%20to%20learn%20more%20about%20admissions%20for%20my%20child."
+    class="wa-float"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Chat on WhatsApp with Kalalayaa Admissions Desk"
+  >
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+    <span>Chat with Admissions</span>
+  </a>
+
+  <!-- Application Success Modal -->
+  <!-- Peak-End Rule: this confirmation is the emotional climax of the entire journey -->
+  <div class="modal-backdrop" id="successModal" role="dialog" aria-modal="true" aria-label="Application submitted successfully">
+    <div class="modal-box">
+      <button class="modal-close" onclick="window.closeModal('successModal')" aria-label="Close confirmation">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div id="successModalBody"><!-- Populated by JS --></div>
+    </div>
+  </div>
+
+  <!-- Toast Stack -->
+  <div class="toast-stack" id="toastStack" role="log" aria-live="assertive" aria-label="Notifications"></div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
