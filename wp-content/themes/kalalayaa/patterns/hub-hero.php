@@ -26,11 +26,6 @@ $hero_image = get_theme_file_uri( 'assets/photos/founder-dhipikca.jpg' );
   <div class="m-hub-hero__overlay" aria-hidden="true"></div>
 
   <div class="m-hub-hero__content l-container">
-    <span class="m-hub-hero__badge">
-      <span class="m-hub-hero__badge-dot" aria-hidden="true"></span>
-      <?php esc_html_e( 'Tiruchirappalli • 6 Specialized Campuses', 'kalalayaa' ); ?>
-    </span>
-
     <h1 class="m-hub-hero__title">
       <?php esc_html_e( 'Kalalayaa Schools & Fine Arts', 'kalalayaa' ); ?>
     </h1>
