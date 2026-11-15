@@ -180,3 +180,18 @@ function kalalayaa_campus_document_title( $title ) {
     return $title;
 }
 add_filter( 'document_title_parts', 'kalalayaa_campus_document_title' );
+
+/* ──────────────────────────────────────────────
+   8. Redirect Legacy /blog/ to /news-events/
+   ────────────────────────────────────────────── */
+function kalalayaa_redirect_legacy_blog() {
+    if ( is_admin() || wp_doing_ajax() ) {
+        return;
+    }
+    $path = trim( parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ), '/' );
+    if ( 'blog' === $path ) {
+        wp_safe_redirect( home_url( '/news-events/' ), 301 );
+        exit;
+    }
+}
+add_action( 'template_redirect', 'kalalayaa_redirect_legacy_blog', 1 );

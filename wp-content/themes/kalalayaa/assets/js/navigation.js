@@ -84,6 +84,20 @@
   }
 
   function setupSmoothScroll() {
+    // Smart "Book a Visit" handler: on campus page scrolls directly to campus visit/admissions
+    var visitBtns = document.querySelectorAll('.js-book-visit-btn');
+    visitBtns.forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        var campusSection = document.querySelector('#campus-visit') || document.querySelector('#admissions');
+        if (campusSection) {
+          e.preventDefault();
+          closeAllDropdowns();
+          closeMobileMenu();
+          campusSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
     document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
       anchor.addEventListener('click', function (e) {
         var targetId = anchor.getAttribute('href');
