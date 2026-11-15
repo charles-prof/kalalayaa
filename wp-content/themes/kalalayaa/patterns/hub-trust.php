@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$founder_photo = get_theme_file_uri( 'assets/photos/danceclass.jpg' );
+$founder_photo = get_theme_file_uri( 'assets/photos/founder-dhipikca.jpg' );
 ?>
 <section class="m-trust" id="founder-story" aria-label="Founder Story and Educational Philosophy">
   <div class="l-container">
