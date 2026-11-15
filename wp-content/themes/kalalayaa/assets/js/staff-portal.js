@@ -232,12 +232,14 @@
 		// Thumbnail.
 		var imageHtml = '';
 		var embedded = post._embedded && post._embedded['wp:featuredmedia'];
-		if (embedded && embedded[0] && embedded[0].media_details) {
-			var sizes = embedded[0].media_details.sizes;
-			var src = (sizes && sizes.medium && sizes.medium.source_url)
-				|| embedded[0].source_url || '';
+		if (embedded && embedded[0]) {
+			var media = embedded[0];
+			var src = (media.media_details && media.media_details.sizes && media.media_details.sizes.medium && media.media_details.sizes.medium.source_url)
+				|| (media.media_details && media.media_details.sizes && media.media_details.sizes.large && media.media_details.sizes.large.source_url)
+				|| (media.media_details && media.media_details.sizes && media.media_details.sizes.full && media.media_details.sizes.full.source_url)
+				|| media.source_url || '';
 			if (src) {
-				imageHtml = '<img class="sp-post-card__image" src="' + escHtml(src) + '" alt="" loading="lazy">';
+				imageHtml = '<img class="sp-post-card__image" src="' + escHtml(src) + '" alt="' + escHtml(post.title.rendered || '') + '" loading="lazy">';
 			}
 		}
 		if (!imageHtml) {

@@ -14,11 +14,11 @@ if ( ! $campus ) {
 	$campus_id = 'kk-nagar';
 }
 
-$staff_login_url = wp_login_url( admin_url( 'admin.php?page=kalalayaa-campus-events' ) );
+$staff_login_url = wp_login_url( home_url( '/staff-portal/' ) );
 
 $campus_posts = new WP_Query( array(
 	'post_type'           => 'post',
-	'posts_per_page'      => 3,
+	'posts_per_page'      => 6,
 	'ignore_sticky_posts' => true,
 	'tax_query'           => array(
 		array(
