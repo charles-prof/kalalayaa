@@ -48,9 +48,14 @@ SMACSS CATEGORIES:
 @import url('assets/css/modules/hub-cta.css');
 
 /* 3. Module Layer — Campus Landing Pages */
+@import url('assets/css/modules/campus-cover.css');
+@import url('assets/css/modules/campus-gallery.css');
 @import url('assets/css/modules/campus-hero.css');
+@import url('assets/css/modules/campus-about.css');
 @import url('assets/css/modules/campus-programs.css');
 @import url('assets/css/modules/campus-contact.css');
+@import url('assets/css/modules/campus-news.css');
+@import url('assets/css/modules/campus-visit.css');
 @import url('assets/css/modules/campus-blog.css');
 @import url('assets/css/modules/campus-inquiry.css');
 

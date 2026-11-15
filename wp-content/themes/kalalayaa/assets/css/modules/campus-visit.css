@@ -1,0 +1,213 @@
+/**
+ * SMACSS: Module - Campus Visit & Counselor Invitation CTA
+ * Warm, high-converting invitation section with deep campus accent background,
+ * counselor presence, and direct inquiry actions.
+ *
+ * @package Kalalayaa
+ */
+
+.m-campus-visit {
+  position: relative;
+  background-color: var(--campus-accent, var(--wp--preset--color--teal-primary, #0E2E35));
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(0, 0, 0, 0.15) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(0, 0, 0, 0.08) 100%);
+  color: #FFFFFF;
+  padding-block: var(--wp--preset--spacing--80, 64px) var(--wp--preset--spacing--90, 72px);
+  overflow: hidden;
+}
+
+/* Subtle decorative glow */
+.m-campus-visit::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ──────────────────────────────────────────────
+   1. Inner Layout
+   ────────────────────────────────────────────── */
+.m-campus-visit__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--wp--preset--spacing--40, 32px);
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 900px) {
+  .m-campus-visit__inner {
+    grid-template-columns: 1.35fr 0.65fr;
+    gap: var(--wp--preset--spacing--60, 48px);
+  }
+}
+
+/* ──────────────────────────────────────────────
+   2. Content & Typography
+   ────────────────────────────────────────────── */
+.m-campus-visit__headline {
+  font-family: var(--wp--preset--font-family--display, 'Playfair Display', Georgia, serif);
+  font-size: clamp(30px, 3.8vw, 46px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #FFFFFF;
+  margin-bottom: var(--wp--preset--spacing--20, 16px);
+  letter-spacing: -0.01em;
+}
+
+.m-campus-visit__sub {
+  font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
+  font-size: clamp(16px, 1.8vw, 19px);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 640px;
+  margin-bottom: var(--wp--preset--spacing--40, 32px);
+}
+
+/* ──────────────────────────────────────────────
+   3. Action Buttons
+   ────────────────────────────────────────────── */
+.m-campus-visit__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--wp--preset--spacing--20, 16px);
+  align-items: center;
+}
+
+.m-campus-visit__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 26px;
+  border-radius: 10px;
+  font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
+  font-size: var(--wp--preset--font-size--base, 16px);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+/* Book a visit — primary standout */
+.m-campus-visit__btn--visit {
+  background-color: #FFFFFF;
+  color: var(--campus-accent, var(--wp--preset--color--teal-primary, #0E2E35));
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+}
+
+.m-campus-visit__btn--visit:hover {
+  background-color: var(--wp--preset--color--teal-tint, #EEF7F9);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
+}
+
+/* Phone link */
+.m-campus-visit__btn--phone {
+  background: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(8px);
+}
+
+.m-campus-visit__btn--phone:hover {
+  background: rgba(255, 255, 255, 0.24);
+  border-color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+/* WhatsApp link */
+.m-campus-visit__btn--whatsapp {
+  background-color: #25D366;
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+}
+
+.m-campus-visit__btn--whatsapp:hover {
+  background-color: #20BA5A;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+}
+
+/* ──────────────────────────────────────────────
+   4. Counselor Card / Badge
+   ────────────────────────────────────────────── */
+.m-campus-visit__counselor {
+  display: flex;
+  justify-content: flex-start;
+}
+
+@media (min-width: 900px) {
+  .m-campus-visit__counselor {
+    justify-content: center;
+  }
+}
+
+.m-campus-visit__counselor-frame {
+  display: flex;
+  align-items: center;
+  gap: var(--wp--preset--spacing--20, 16px);
+  padding: var(--wp--preset--spacing--30, 24px);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  max-width: 360px;
+  width: 100%;
+}
+
+.m-campus-visit__counselor-avatar {
+  flex-shrink: 0;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  overflow: hidden;
+}
+
+.m-campus-visit__counselor-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.m-campus-visit__counselor-tag {
+  font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(0, 0, 0, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+  align-self: flex-start;
+}
+
+.m-campus-visit__counselor-name {
+  font-family: var(--wp--preset--font-family--display, 'Playfair Display', Georgia, serif);
+  font-size: var(--wp--preset--font-size--lg, 18px);
+  font-weight: 600;
+  color: #FFFFFF;
+  line-height: 1.25;
+}
+
+.m-campus-visit__counselor-title {
+  font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
+  font-size: var(--wp--preset--font-size--xs, 12px);
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.4;
+}

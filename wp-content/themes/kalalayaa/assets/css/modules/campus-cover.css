@@ -1,0 +1,210 @@
+/**
+ * SMACSS: Module - Campus Cover
+ * Full-bleed emotional opening experience for campus landing pages.
+ * Connects parents to the school's atmosphere before technical metrics.
+ */
+
+.m-campus-cover {
+  position: relative;
+  min-height: 90vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  overflow: hidden;
+  background-color: var(--wp--preset--color--teal-primary, #0E2E35);
+  box-sizing: border-box;
+}
+
+/* Full-bleed responsive background photography */
+.m-campus-cover__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+  filter: brightness(0.92) contrast(1.04);
+}
+
+/* Twilight gradient overlay:
+   - Upper vignette and edge shading preserve photo depth
+   - Bottom 40% has smooth twilight gradient to ensure pristine text legibility
+   - Central & upper view remains crisp and transparent so parents FEEL the school
+*/
+.m-campus-cover__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 30%, transparent 45%, rgba(10, 28, 33, 0.4) 100%),
+    linear-gradient(
+      to top,
+      rgba(10, 28, 33, 0.94) 0%,
+      rgba(14, 46, 53, 0.72) 28%,
+      rgba(14, 46, 53, 0.25) 55%,
+      rgba(10, 28, 33, 0.2) 100%
+    );
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Hero Content Area */
+.m-campus-cover__content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  padding-top: var(--wp--preset--spacing--100, 80px);
+  padding-bottom: calc(var(--wp--preset--spacing--80, 64px) + 24px);
+  color: var(--wp--preset--color--white, #FFFFFF);
+}
+
+/* Badge Pill (top-left, small, campus accent color) */
+.m-campus-cover__badge {
+  display: inline-flex;
+  align-items: center;
+  background: var(--campus-accent, var(--wp--preset--color--teal-primary, #0E2E35));
+  color: var(--wp--preset--color--white, #FFFFFF);
+  padding: 6px var(--wp--preset--spacing--20, 16px);
+  border-radius: 9999px;
+  font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
+  font-size: var(--wp--preset--font-size--xs, 12px);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: var(--wp--preset--spacing--20, 16px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Campus Name in Playfair Display (clamp 42px -> 72px) */
+.m-campus-cover__title {
+  font-family: var(--wp--preset--font-family--display, 'Playfair Display', Georgia, serif);
+  font-size: clamp(42px, 5.5vw, 72px);
+  font-weight: 700;
+  line-height: 1.08;
+  color: var(--wp--preset--color--white, #FFFFFF);
+  margin-top: 0;
+  margin-bottom: var(--wp--preset--spacing--20, 16px);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
+  max-width: 900px;
+}
+
+/* Tagline / Subtitle */
+.m-campus-cover__subtitle {
+  font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
+  font-size: clamp(16px, 2vw, 22px);
+  font-weight: 400;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.94);
+  max-width: 700px;
+  margin-top: 0;
+  margin-bottom: var(--wp--preset--spacing--40, 32px);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+}
+
+/* Call to Action Buttons */
+.m-campus-cover__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--wp--preset--spacing--20, 16px);
+  flex-wrap: wrap;
+}
+
+.m-campus-cover__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px var(--wp--preset--spacing--30, 24px);
+  font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
+  font-size: var(--wp--preset--font-size--sm, 14px);
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, filter 0.2s ease;
+}
+
+.m-campus-cover__cta--primary {
+  background: var(--campus-accent, var(--wp--preset--color--teal-primary, #0E2E35));
+  color: var(--wp--preset--color--white, #FFFFFF);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.m-campus-cover__cta--primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.12);
+  color: var(--wp--preset--color--white, #FFFFFF);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.m-campus-cover__cta--secondary {
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--wp--preset--color--white, #FFFFFF);
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+}
+
+.m-campus-cover__cta--secondary:hover {
+  background: rgba(255, 255, 255, 0.32);
+  border-color: #FFFFFF;
+  color: var(--wp--preset--color--white, #FFFFFF);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* Animated Scroll Hint at bottom center */
+.m-campus-cover__scroll-hint {
+  position: absolute;
+  bottom: var(--wp--preset--spacing--20, 16px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  color: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.m-campus-cover__scroll-hint:hover {
+  color: var(--wp--preset--color--white, #FFFFFF);
+  opacity: 1;
+}
+
+.m-campus-cover__scroll-indicator {
+  display: inline-flex;
+  animation: campusCoverScrollPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes campusCoverScrollPulse {
+  0% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+}
+
+/* Reduced Motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .m-campus-cover__scroll-indicator {
+    animation: none;
+  }
+  .m-campus-cover__cta,
+  .m-campus-cover__bg {
+    transition: none;
+  }
+}

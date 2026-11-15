@@ -1,0 +1,161 @@
+/**
+ * SMACSS: Module - Campus Life Gallery
+ * Horizontal scroll-snap photo strip showcasing authentic campus moments.
+ * Pure CSS scroll snapping and indicator dots.
+ */
+
+.m-campus-gallery {
+  position: relative;
+  background-color: var(--wp--preset--color--teal-canvas, #F4FAFB);
+  padding-top: var(--wp--preset--spacing--40, 32px);
+  padding-bottom: var(--wp--preset--spacing--30, 24px);
+  overflow: hidden;
+}
+
+/* Horizontal Scroll-Snap Track */
+.m-campus-gallery__track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-inline: var(--wp--preset--spacing--20, 16px);
+  padding-block: var(--wp--preset--spacing--10, 8px);
+}
+
+.m-campus-gallery__track::-webkit-scrollbar {
+  display: none;
+}
+
+/* On desktop, pad track so first item aligns gracefully */
+@media (min-width: 1024px) {
+  .m-campus-gallery__track {
+    padding-inline: max(var(--wp--preset--spacing--40, 32px), calc((100vw - 1200px) / 2));
+    gap: var(--wp--preset--spacing--20, 16px);
+  }
+}
+
+/* Gallery Slide */
+.m-campus-gallery__slide {
+  position: relative;
+  flex: 0 0 auto;
+  width: 72vw;
+  min-width: 72vw;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+  box-shadow: 0 6px 20px rgba(14, 46, 53, 0.1);
+  background: var(--wp--preset--color--teal-tint, #EEF7F9);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .m-campus-gallery__slide {
+    width: 40vw;
+    min-width: 40vw;
+    max-width: 560px;
+  }
+}
+
+.m-campus-gallery__slide:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(14, 46, 53, 0.16);
+}
+
+/* Slide Image */
+.m-campus-gallery__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 12px;
+}
+
+/* Slide Caption with Twilight Gradient */
+.m-campus-gallery__caption {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  padding-inline: var(--wp--preset--spacing--20, 16px);
+  padding-top: var(--wp--preset--spacing--40, 32px);
+  padding-bottom: var(--wp--preset--spacing--20, 16px);
+  background: linear-gradient(to top, rgba(10, 28, 33, 0.88) 0%, rgba(14, 46, 53, 0.45) 60%, transparent 100%);
+  color: var(--wp--preset--color--white, #FFFFFF);
+  font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
+  font-size: var(--wp--preset--font-size--sm, 14px);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+/* Navigation Indicator Dots */
+.m-campus-gallery__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: var(--wp--preset--spacing--20, 16px);
+  margin-bottom: var(--wp--preset--spacing--20, 16px);
+}
+
+.m-campus-gallery__dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background-color: var(--wp--preset--color--border-subtle, #D6E8EB);
+  border: 1px solid rgba(14, 46, 53, 0.12);
+  text-decoration: none;
+  transition: background-color 0.25s ease, transform 0.25s ease, width 0.25s ease;
+}
+
+.m-campus-gallery__dot:hover,
+.m-campus-gallery__dot:focus {
+  background-color: var(--campus-accent, var(--wp--preset--color--teal-primary, #0E2E35));
+  transform: scale(1.25);
+  outline: none;
+}
+
+/* Breadcrumbs Section Below Gallery */
+.m-campus-gallery__breadcrumbs-wrap {
+  margin-top: var(--wp--preset--spacing--10, 8px);
+}
+
+.m-campus-gallery__breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
+  font-size: var(--wp--preset--font-size--xs, 12px);
+  color: var(--wp--preset--color--teal-muted, #2A4F5A);
+  padding-block: var(--wp--preset--spacing--10, 8px);
+}
+
+.m-campus-gallery__breadcrumbs-link {
+  color: var(--wp--preset--color--teal-muted, #2A4F5A);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.m-campus-gallery__breadcrumbs-link:hover {
+  color: var(--campus-accent, var(--wp--preset--color--teal-primary, #0E2E35));
+  text-decoration: underline;
+}
+
+.m-campus-gallery__breadcrumbs-sep {
+  opacity: 0.45;
+  user-select: none;
+}
+
+.m-campus-gallery__breadcrumbs-current {
+  color: var(--wp--preset--color--teal-deep, #152023);
+  font-weight: 600;
+}

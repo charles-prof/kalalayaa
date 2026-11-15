@@ -10,14 +10,17 @@ $campus_id = Kalalayaa_Context::get_current_campus_id();
 $campus    = kalalayaa_get_campus( $campus_id );
 
 if ( ! $campus ) {
-	$campus = kalalayaa_get_campus( 'kk-nagar' );
+	$campus    = kalalayaa_get_campus( 'kk-nagar' );
 	$campus_id = 'kk-nagar';
 }
 
+$staff_login_url = wp_login_url( admin_url( 'admin.php?page=kalalayaa-campus-events' ) );
+
 $campus_posts = new WP_Query( array(
-	'post_type'      => 'post',
-	'posts_per_page' => 3,
-	'tax_query'      => array(
+	'post_type'           => 'post',
+	'posts_per_page'      => 3,
+	'ignore_sticky_posts' => true,
+	'tax_query'           => array(
 		array(
 			'taxonomy' => 'campus',
 			'field'    => 'slug',
@@ -26,65 +29,85 @@ $campus_posts = new WP_Query( array(
 	),
 ) );
 ?>
-<section class="m-campus-blog" id="events">
+<section class="m-campus-news" id="campus-news">
   <div class="l-container">
-    <div class="m-campus-blog__header">
-      <div>
-        <span class="m-campus-blog__eyebrow">Life at <?php echo esc_html( $campus['name'] ); ?></span>
-        <h2 class="m-campus-blog__title">Recent Events &amp; Celebrations</h2>
-      </div>
-      <a href="<?php echo esc_url( get_term_link( $campus_id, 'campus' ) ); ?>" class="m-campus-blog__all-link">
-        View All <?php echo esc_html( $campus['name'] ); ?> Posts &rarr;
-      </a>
+
+    <div class="m-campus-news__header">
+      <span class="m-campus-news__eyebrow">Campus Life &amp; Stories</span>
+      <h2 class="m-campus-news__title">Latest from <?php echo esc_html( $campus['name'] ); ?></h2>
+      <p class="m-campus-news__subtitle">Shared by our staff &mdash; recent events &amp; celebrations</p>
     </div>
 
     <?php if ( $campus_posts->have_posts() ) : ?>
-      <div class="m-campus-blog__grid">
+      <div class="m-campus-news__grid">
         <?php
         while ( $campus_posts->have_posts() ) :
         	$campus_posts->the_post();
+        	$campus_terms = get_the_terms( get_the_ID(), 'campus' );
+        	$badge_text   = ( ! empty( $campus_terms ) && ! is_wp_error( $campus_terms ) ) ? $campus_terms[0]->name : $campus['name'];
         ?>
-          <article class="m-blog-card">
+          <article class="m-campus-news__card">
             <?php if ( has_post_thumbnail() ) : ?>
-              <div class="m-blog-card__image-wrap">
-                <a href="<?php the_permalink(); ?>">
-                  <?php the_post_thumbnail( 'medium_large', array( 'class' => 'm-blog-card__img' ) ); ?>
+              <div class="m-campus-news__card-thumb">
+                <a href="<?php the_permalink(); ?>" tabindex="-1" aria-hidden="true">
+                  <?php the_post_thumbnail( 'medium_large', array( 'class' => 'm-campus-news__card-img', 'loading' => 'lazy' ) ); ?>
                 </a>
+                <span class="m-campus-news__card-badge"><?php echo esc_html( $badge_text ); ?></span>
               </div>
             <?php else : ?>
-              <div class="m-blog-card__image-wrap m-blog-card__image-wrap--fallback">
-                <a href="<?php the_permalink(); ?>">
-                  <img src="<?php echo esc_url( $campus['image'] ); ?>"
-                       alt="<?php the_title_attribute(); ?>"
-                       class="m-blog-card__img"
-                       loading="lazy">
+              <div class="m-campus-news__card-thumb m-campus-news__card-thumb--placeholder">
+                <a href="<?php the_permalink(); ?>" tabindex="-1" aria-hidden="true" class="m-campus-news__card-placeholder-link">
+                  <span class="m-campus-news__card-placeholder-text">📸 No photo yet</span>
                 </a>
+                <span class="m-campus-news__card-badge"><?php echo esc_html( $badge_text ); ?></span>
               </div>
             <?php endif; ?>
 
-            <div class="m-blog-card__body">
-              <div class="m-blog-card__meta">
-                <time class="m-blog-card__date" datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
+            <div class="m-campus-news__card-body">
+              <div class="m-campus-news__card-meta">
+                <time class="m-campus-news__card-date" datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
                   <?php echo esc_html( get_the_date( 'M j, Y' ) ); ?>
                 </time>
-                <span class="m-blog-card__dot">·</span>
-                <span class="m-blog-card__author">By <?php the_author(); ?></span>
+                <span class="m-campus-news__card-dot" aria-hidden="true">&bull;</span>
+                <span class="m-campus-news__card-author">By <?php the_author(); ?></span>
               </div>
-              <h3 class="m-blog-card__title">
+
+              <h3 class="m-campus-news__card-title">
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
               </h3>
-              <p class="m-blog-card__excerpt"><?php echo wp_trim_words( get_the_excerpt(), 18, '...' ); ?></p>
-              <a href="<?php the_permalink(); ?>" class="m-blog-card__cta">Read Full Story &rarr;</a>
+
+              <p class="m-campus-news__card-excerpt">
+                <?php echo esc_html( wp_trim_words( get_the_excerpt(), 20, '...' ) ); ?>
+              </p>
+
+              <a href="<?php the_permalink(); ?>" class="m-campus-news__card-link">
+                Read more &rarr;
+              </a>
             </div>
           </article>
         <?php endwhile; wp_reset_postdata(); ?>
       </div>
+
+      <div class="m-campus-news__staff-cta">
+        <a href="<?php echo esc_url( $staff_login_url ); ?>" class="m-campus-news__staff-btn">
+          Staff Login to Share an Event &rarr;
+        </a>
+      </div>
+
     <?php else : ?>
-      <div class="m-campus-blog__empty">
-        <p class="m-campus-blog__empty-text">
-          Campus coordinators at <?php echo esc_html( $campus['name'] ); ?> are preparing upcoming festival and classroom celebration updates. Stay tuned!
-        </p>
+      <div class="m-campus-news__empty">
+        <div class="m-campus-news__empty-card">
+          <p class="m-campus-news__empty-text">
+            No events posted yet &mdash; <?php echo esc_html( $campus['name'] ); ?> staff, be the first to share a celebration!
+          </p>
+          <div class="m-campus-news__staff-cta m-campus-news__staff-cta--empty">
+            <a href="<?php echo esc_url( $staff_login_url ); ?>" class="m-campus-news__staff-btn">
+              Staff Login to Share an Event &rarr;
+            </a>
+          </div>
+        </div>
       </div>
     <?php endif; ?>
+
   </div>
 </section>

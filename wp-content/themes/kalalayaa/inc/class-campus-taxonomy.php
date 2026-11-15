@@ -17,6 +17,7 @@ class Kalalayaa_Campus_Taxonomy {
     public static function init() {
         add_action( 'init', array( __CLASS__, 'register_taxonomy' ) );
         add_action( 'init', array( __CLASS__, 'seed_default_terms' ), 20 );
+        add_action( 'admin_init', array( __CLASS__, 'seed_editor_campus_meta' ) );
     }
 
     public static function register_taxonomy() {
@@ -50,6 +51,62 @@ class Kalalayaa_Campus_Taxonomy {
         foreach ( $campuses as $slug => $name ) {
             if ( ! term_exists( $slug, 'campus' ) ) {
                 wp_insert_term( $name, 'campus', array( 'slug' => $slug ) );
+            }
+        }
+    }
+
+    /**
+     * Auto-assign _kalalayaa_campus_id user meta for existing editor staff.
+     *
+     * One-time auto-assignment on admin_init. If an editor user does not have
+     * _kalalayaa_campus_id set, checks user_login patterns (e.g. editor_srirangam -> srirangam)
+     * and seeds the meta.
+     *
+     * @return void
+     */
+    public static function seed_editor_campus_meta() {
+        // Query users with editor role
+        $editors = get_users( array( 'role' => 'editor' ) );
+        if ( empty( $editors ) ) {
+            $editors = get_users();
+        }
+
+        $campus_map = array(
+            'kk-nagar'      => array( 'kk-nagar', 'kknagar', 'kk_nagar', 'kk' ),
+            'srirangam'     => array( 'srirangam' ),
+            'e-techno'      => array( 'e-techno', 'etechno', 'e_techno', 'techno' ),
+            'cantonment'    => array( 'cantonment' ),
+            'crawford'      => array( 'crawford' ),
+            'kailash-nagar' => array( 'kailash-nagar', 'kailashnagar', 'kailash_nagar', 'kailash' ),
+        );
+
+        foreach ( $editors as $user ) {
+            // Never assign campus to administrators
+            if ( in_array( 'administrator', (array) $user->roles, true ) || 'charnithi_admin' === $user->user_login ) {
+                continue;
+            }
+
+            $existing = get_user_meta( $user->ID, '_kalalayaa_campus_id', true );
+            if ( ! empty( $existing ) ) {
+                continue;
+            }
+
+            $login    = strtolower( $user->user_login );
+            $nicename = strtolower( $user->user_nicename );
+            $display  = strtolower( $user->display_name );
+
+            $matched_campus = null;
+            foreach ( $campus_map as $slug => $patterns ) {
+                foreach ( $patterns as $pattern ) {
+                    if ( false !== strpos( $login, $pattern ) || false !== strpos( $nicename, $pattern ) || false !== strpos( $display, $pattern ) ) {
+                        $matched_campus = $slug;
+                        break 2;
+                    }
+                }
+            }
+
+            if ( $matched_campus ) {
+                update_user_meta( $user->ID, '_kalalayaa_campus_id', $matched_campus );
             }
         }
     }

@@ -19,6 +19,11 @@ require_once get_template_directory() . '/inc/campus-registry.php';
 require_once get_template_directory() . '/inc/class-campus-context.php';
 require_once get_template_directory() . '/inc/class-campus-taxonomy.php';
 require_once get_template_directory() . '/inc/template-tags.php';
+require_once get_template_directory() . '/inc/class-staff-dashboard.php';
+require_once get_template_directory() . '/inc/class-staff-onboarding.php';
+
+new Kalalayaa_Staff_Dashboard();
+new Kalalayaa_Staff_Onboarding();
 
 /* ──────────────────────────────────────────────
    2. Theme Setup
@@ -53,6 +58,29 @@ add_action( 'after_setup_theme', 'kalalayaa_theme_setup' );
    ────────────────────────────────────────────── */
 function kalalayaa_enqueue_scripts() {
     wp_enqueue_style( 'kalalayaa-theme', get_stylesheet_uri(), array(), '2.0.0' );
+    wp_enqueue_style( 'kalalayaa-campus-cover', get_theme_file_uri( 'assets/css/modules/campus-cover.css' ), array( 'kalalayaa-theme' ), '2.0.0' );
+    wp_enqueue_style( 'kalalayaa-campus-gallery', get_theme_file_uri( 'assets/css/modules/campus-gallery.css' ), array( 'kalalayaa-theme' ), '2.0.0' );
+
+    wp_enqueue_style(
+        'kalalayaa-campus-about',
+        get_theme_file_uri( 'assets/css/modules/campus-about.css' ),
+        array( 'kalalayaa-theme' ),
+        '2.0.0'
+    );
+
+    wp_enqueue_style(
+        'kalalayaa-campus-news',
+        get_theme_file_uri( 'assets/css/modules/campus-news.css' ),
+        array( 'kalalayaa-theme' ),
+        '2.0.0'
+    );
+
+    wp_enqueue_style(
+        'kalalayaa-campus-visit',
+        get_theme_file_uri( 'assets/css/modules/campus-visit.css' ),
+        array( 'kalalayaa-theme' ),
+        '2.0.0'
+    );
 
     wp_enqueue_script(
         'kalalayaa-navigation',
