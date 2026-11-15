@@ -3,8 +3,9 @@
  * Dynamic UI states toggled via JavaScript.
  */
 
-.is-active {
-  color: var(--campus-accent, var(--wp--preset--color--teal-primary)) !important;
+/* Scoped active state for text/link elements (excludes buttons, pills, badges) */
+.is-active:not(button):not([class*="btn"]):not([class*="pill"]):not([class*="badge"]) {
+  color: var(--campus-accent, var(--wp--preset--color--teal-primary));
 }
 
 .is-reveal-target {

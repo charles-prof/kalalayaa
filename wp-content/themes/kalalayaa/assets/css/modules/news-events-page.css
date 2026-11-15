@@ -98,10 +98,21 @@
 }
 
 .m-news-filter__pill.is-active {
-  background: var(--wp--preset--color--teal-primary, #0E2E35);
-  color: #FFFFFF;
-  border-color: var(--wp--preset--color--teal-primary, #0E2E35);
+  background: var(--wp--preset--color--teal-primary, #0E2E35) !important;
+  color: #FFFFFF !important;
+  border-color: var(--wp--preset--color--teal-primary, #0E2E35) !important;
   box-shadow: 0 4px 12px rgba(14, 46, 53, 0.2);
+}
+
+.m-news-filter__pill.is-active:hover {
+  background: var(--wp--preset--color--teal-primary, #0E2E35) !important;
+  color: #FFFFFF !important;
+  border-color: var(--wp--preset--color--teal-primary, #0E2E35) !important;
+}
+
+.m-news-filter__pill.is-active .m-news-filter__pill-count {
+  color: #FFFFFF !important;
+  opacity: 0.85;
 }
 
 .m-news-filter__pill-count {
