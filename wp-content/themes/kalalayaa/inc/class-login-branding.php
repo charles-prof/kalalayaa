@@ -78,49 +78,24 @@ class Kalalayaa_Login_Branding {
 	}
 
 	/**
-	 * Injects an energetic, encouraging banner above the login card.
+	 * Injects a simple, uncluttered guidance message above the login card.
 	 *
 	 * @param string $message Existing login message.
 	 * @return string
 	 */
 	public function custom_login_banner( $message ) {
-		$campuses = kalalayaa_get_campus_registry();
+		$guidance = '<p class="kalalayaa-login-guidance">' . esc_html__( 'Log in to share events, milestones & moments from your campus with our parent community.', 'kalalayaa' ) . '</p>';
 
-		ob_start();
-		?>
-		<div class="kalalayaa-login-banner" role="region" aria-label="Kalalayaa Staff Welcome">
-			<span class="kalalayaa-login-banner__badge">
-				&#10022; Staff &amp; Educator Sanctuary
-			</span>
-			<h2 class="kalalayaa-login-banner__title">
-				Welcome Back, Educators!
-			</h2>
-			<p class="kalalayaa-login-banner__text">
-				Where passion meets motherly care. Log in to share events, milestones &amp; moments from your campus with our parent community.
-			</p>
-
-			<div class="kalalayaa-login-campuses" aria-label="Our 6 Campuses">
-				<?php foreach ( $campuses as $campus ) : ?>
-					<span class="kalalayaa-login-campus-pill" style="border-left: 3px solid <?php echo esc_attr( $campus['accent_color'] ); ?>;">
-						<?php echo esc_html( $campus['name'] ); ?>
-					</span>
-				<?php endforeach; ?>
-			</div>
-		</div>
-		<?php
-		$banner = ob_get_clean();
-
-		return $banner . $message;
+		return $guidance . $message;
 	}
 
 	/**
-	 * Renders a warm institutional footer note below the login container.
+	 * Renders a clean, unobtrusive footer note below the login container.
 	 */
 	public function render_login_footer() {
 		?>
 		<div class="kalalayaa-login-footer-note" aria-hidden="true">
-			<strong>Kalalayaa Institutions</strong> &bull; Founded by Mrs. Dhipikca Rajasekaran<br>
-			6 Specialized Early Learning &amp; Arts Sanctuaries in Tiruchirappalli
+			Kalalayaa Schools &amp; Fine Arts &bull; Tiruchirappalli
 		</div>
 		<?php
 	}

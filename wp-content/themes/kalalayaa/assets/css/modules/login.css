@@ -21,10 +21,10 @@ body.login {
   background-color: #0E2E35;
   background-image: 
     linear-gradient(
-      145deg,
-      rgba(14, 46, 53, 0.90) 0%,
-      rgba(224, 40, 29, 0.78) 50%,
-      rgba(14, 46, 53, 0.94) 100%
+      160deg,
+      rgba(14, 46, 53, 0.92) 0%,
+      rgba(18, 54, 63, 0.86) 55%,
+      rgba(14, 46, 53, 0.96) 100%
     ),
     var(--kalalayaa-login-bg, url('../../photos/annualdayfunctions.jpg'));
   background-size: cover;
@@ -76,72 +76,17 @@ body.login {
     0 0 32px rgba(224, 40, 29, 0.8) !important;
 }
 
-/* 4. Energetic Staff Welcome Notice */
-.kalalayaa-login-banner {
-  background: rgba(14, 46, 53, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 14px;
-  padding: 16px 20px;
+/* 4. Uncluttered Staff Guidance */
+.kalalayaa-login-guidance {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: #FFFFFF;
   text-align: center;
-  color: #FFFFFF;
-  margin-bottom: 20px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-}
-
-.kalalayaa-login-banner__badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: #E0281D;
-  color: #FFFFFF;
-  padding: 4px 12px;
-  border-radius: 9999px;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-  box-shadow: 0 2px 8px rgba(224, 40, 29, 0.5);
-}
-
-.kalalayaa-login-banner__title {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 20px;
-  font-weight: 700;
-  margin: 0 0 6px;
-  color: #FFFFFF;
-  line-height: 1.25;
-}
-
-.kalalayaa-login-banner__text {
-  font-size: 13px;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.9);
-  margin: 0 0 12px;
-}
-
-/* 6 Campus Pills Strip */
-.kalalayaa-login-campuses {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 6px;
-  margin-top: 8px;
-  padding-top: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.kalalayaa-login-campus-pill {
-  font-size: 10px;
-  font-weight: 700;
-  padding: 3px 8px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.15);
-  color: #FFFFFF;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
+  max-width: 380px;
+  margin: 0 auto 24px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
 }
 
 /* 5. The Login Form Card */
