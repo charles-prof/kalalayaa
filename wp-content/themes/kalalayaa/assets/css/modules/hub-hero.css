@@ -1,8 +1,9 @@
 /**
- * SMACSS: Module - Hub Hero (Full-Bleed Emotional Cover)
+ * SMACSS: Module - Hub Hero (Clean Full-Bleed Emotional Cover)
  *
  * Full viewport height emotional cover for Kalalayaa hub homepage.
- * Zero inline styles, 8pt grid tokens, and authentic school presence.
+ * Clean, bottom-docked text hierarchy matching the individual campus cover experience.
+ * Leaves the upper view completely clear so Founder Mrs. Dhipikca and the students shine.
  *
  * @package Kalalayaa
  * @author  CharNithi Software Crafts
@@ -10,71 +11,75 @@
 
 .m-hub-hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 90vh;
   min-height: 100dvh;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  align-items: flex-end;
+  justify-content: flex-start;
   overflow: hidden;
   background-color: var(--wp--preset--color--teal-primary, #0E2E35);
-  padding-top: calc(var(--wp--preset--spacing--60, 48px) + 72px);
-  padding-bottom: var(--wp--preset--spacing--70, 64px);
+  box-sizing: border-box;
 }
 
+/* Full-bleed responsive background photography */
 .m-hub-hero__bg {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
+  object-position: center 25%;
   z-index: 1;
-  filter: brightness(0.92) contrast(1.05);
+  filter: brightness(0.94) contrast(1.04);
 }
 
+/* Twilight gradient overlay:
+   - Central & upper view remains crisp and transparent so faces are completely unobstructed
+   - Bottom 45% has smooth twilight gradient to ensure pristine text legibility
+*/
 .m-hub-hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(14, 46, 53, 0.60) 0%,
-    rgba(14, 46, 53, 0.25) 40%,
-    rgba(14, 46, 53, 0.88) 100%
-  );
+  background:
+    radial-gradient(ellipse at 50% 30%, transparent 45%, rgba(10, 28, 33, 0.35) 100%),
+    linear-gradient(
+      to top,
+      rgba(10, 28, 33, 0.95) 0%,
+      rgba(14, 46, 53, 0.76) 28%,
+      rgba(14, 46, 53, 0.22) 55%,
+      rgba(10, 28, 33, 0.22) 100%
+    );
   z-index: 2;
+  pointer-events: none;
 }
 
+/* Hero Content Area - Docked to bottom-left within container */
 .m-hub-hero__content {
   position: relative;
   z-index: 3;
-  text-align: center;
-  max-width: 920px;
-  margin-inline: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 100%;
+  padding-top: var(--wp--preset--spacing--100, 80px);
+  padding-bottom: calc(var(--wp--preset--spacing--80, 64px) + 24px);
+  color: var(--wp--preset--color--white, #FFFFFF);
 }
 
-.m-hub-hero__badge-wrap {
-  margin-bottom: var(--wp--preset--spacing--20, 16px);
-}
-
+/* Badge Pill */
 .m-hub-hero__badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: #FFFFFF;
-  padding: 6px 16px;
+  background: var(--wp--preset--color--teal-primary, #0E2E35);
+  color: var(--wp--preset--color--white, #FFFFFF);
+  padding: 6px var(--wp--preset--spacing--20, 16px);
   border-radius: 9999px;
   font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
   font-size: var(--wp--preset--font-size--xs, 12px);
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  margin-bottom: var(--wp--preset--spacing--20, 16px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .m-hub-hero__badge-dot {
@@ -82,33 +87,39 @@
   height: 8px;
   border-radius: 50%;
   background-color: var(--wp--preset--color--crimson, #E0281D);
-  box-shadow: 0 0 10px rgba(224, 40, 29, 0.8);
+  box-shadow: 0 0 8px rgba(224, 40, 29, 0.8);
 }
 
+/* Title in Playfair Display (clamp 40px -> 68px) */
 .m-hub-hero__title {
-  font-family: var(--wp--preset--font-family--display, 'Playfair Display', serif);
+  font-family: var(--wp--preset--font-family--display, 'Playfair Display', Georgia, serif);
+  font-size: clamp(38px, 5.5vw, 68px);
+  font-weight: 700;
+  line-height: 1.08;
   color: var(--wp--preset--color--white, #FFFFFF);
-  font-size: clamp(38px, 6vw, 68px);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
-  margin: 0 0 var(--wp--preset--spacing--30, 24px);
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  margin-top: 0;
+  margin-bottom: var(--wp--preset--spacing--20, 16px);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
+  max-width: 900px;
 }
 
+/* Tagline / Subtitle */
 .m-hub-hero__subtitle {
-  color: rgba(255, 255, 255, 0.94);
   font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
-  font-size: clamp(16px, 2.2vw, 20px);
-  line-height: 1.65;
-  margin: 0 auto var(--wp--preset--spacing--50, 40px);
-  max-width: 68ch;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  font-size: clamp(16px, 2vw, 22px);
+  font-weight: 400;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.94);
+  max-width: 700px;
+  margin-top: 0;
+  margin-bottom: var(--wp--preset--spacing--40, 32px);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
 }
 
+/* Call to Action Buttons */
 .m-hub-hero__actions {
   display: flex;
-  justify-content: center;
+  align-items: center;
   gap: var(--wp--preset--spacing--20, 16px);
   flex-wrap: wrap;
 }
@@ -117,109 +128,108 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 16px 32px;
-  border-radius: 8px;
+  padding: 14px var(--wp--preset--spacing--30, 24px);
   font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
-  font-weight: 700;
   font-size: var(--wp--preset--font-size--sm, 14px);
+  font-weight: 700;
+  line-height: 1;
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
-  letter-spacing: 0.02em;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, filter 0.2s ease;
 }
 
 .m-hub-hero__cta--primary {
   background-color: var(--wp--preset--color--crimson, #E0281D);
-  color: #FFFFFF;
-  box-shadow: 0 8px 24px rgba(224, 40, 29, 0.4);
+  color: var(--wp--preset--color--white, #FFFFFF);
+  box-shadow: 0 4px 16px rgba(224, 40, 29, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .m-hub-hero__cta--primary:hover {
   transform: translateY(-2px);
-  filter: brightness(1.1);
-  box-shadow: 0 12px 30px rgba(224, 40, 29, 0.5);
-  color: #FFFFFF;
+  filter: brightness(1.12);
+  color: var(--wp--preset--color--white, #FFFFFF);
+  box-shadow: 0 8px 24px rgba(224, 40, 29, 0.45);
 }
 
 .m-hub-hero__cta--secondary {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.16);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  color: #FFFFFF;
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--wp--preset--color--white, #FFFFFF);
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
 }
 
 .m-hub-hero__cta--secondary:hover {
-  transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.32);
   border-color: #FFFFFF;
-  color: #FFFFFF;
+  color: var(--wp--preset--color--white, #FFFFFF);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
-/* Animated Scroll Down Indicator */
+/* Animated Scroll Hint at bottom center */
 .m-hub-hero__scroll-hint {
   position: absolute;
-  bottom: var(--wp--preset--spacing--30, 24px);
+  bottom: var(--wp--preset--spacing--20, 16px);
   left: 50%;
   transform: translateX(-50%);
   z-index: 3;
+  color: rgba(255, 255, 255, 0.85);
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%;
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.8);
-  font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
-  font-size: var(--wp--preset--font-size--xs, 12px);
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease, color 0.2s ease;
 }
 
 .m-hub-hero__scroll-hint:hover {
+  color: var(--wp--preset--color--white, #FFFFFF);
   opacity: 1;
-  color: #FFFFFF;
 }
 
 .m-hub-hero__scroll-indicator {
-  width: 24px;
-  height: 38px;
-  border: 2px solid rgba(255, 255, 255, 0.6);
-  border-radius: 12px;
-  display: flex;
-  justify-content: center;
-  padding-top: 6px;
+  display: inline-flex;
+  animation: hubCoverScrollPulse 2.2s ease-in-out infinite;
 }
 
-.m-hub-hero__scroll-dot {
-  width: 4px;
-  height: 8px;
-  border-radius: 2px;
-  background-color: #FFFFFF;
-  animation: hubScrollBounce 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
-}
-
-@keyframes hubScrollBounce {
+@keyframes hubCoverScrollPulse {
   0% {
     transform: translateY(0);
-    opacity: 1;
+    opacity: 0.6;
   }
   50% {
-    transform: translateY(12px);
-    opacity: 0.2;
+    transform: translateY(8px);
+    opacity: 1;
   }
   100% {
     transform: translateY(0);
-    opacity: 1;
+    opacity: 0.6;
   }
 }
 
+/* Reduced Motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .m-hub-hero__scroll-indicator {
+    animation: none;
+  }
+  .m-hub-hero__cta,
+  .m-hub-hero__bg {
+    transition: none;
+  }
+}
+
+/* Mobile viewport refinement */
 @media (max-width: 640px) {
-  .m-hub-hero {
-    padding-top: 100px;
-    padding-bottom: 80px;
+  .m-hub-hero__content {
+    padding-bottom: calc(var(--wp--preset--spacing--60, 48px) + 32px);
   }
   .m-hub-hero__actions {
     flex-direction: column;
+    align-items: stretch;
     width: 100%;
     max-width: 320px;
   }
