@@ -62,6 +62,7 @@ SMACSS CATEGORIES:
 /* 3. Module Layer — Blog & Notification Modules */
 @import url('assets/css/modules/blog-card.css');
 @import url('assets/css/modules/toast.css');
+@import url('assets/css/modules/login.css');
 
 /* 4. State Layer */
 @import url('assets/css/state/is-active.css');

@@ -1,16 +1,25 @@
 /**
- * SMACSS: Module - Hub Hero
- * Emotional, full-bleed hero with dark vignette and serene typography.
+ * SMACSS: Module - Hub Hero (Full-Bleed Emotional Cover)
+ *
+ * Full viewport height emotional cover for Kalalayaa hub homepage.
+ * Zero inline styles, 8pt grid tokens, and authentic school presence.
+ *
+ * @package Kalalayaa
+ * @author  CharNithi Software Crafts
  */
 
 .m-hub-hero {
   position: relative;
-  min-height: 80vh;
+  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   overflow: hidden;
-  background: var(--wp--preset--color--teal-primary, #0E2E35);
+  background-color: var(--wp--preset--color--teal-primary, #0E2E35);
+  padding-top: calc(var(--wp--preset--spacing--60, 48px) + 72px);
+  padding-bottom: var(--wp--preset--spacing--70, 64px);
 }
 
 .m-hub-hero__bg {
@@ -19,8 +28,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 30%;
   z-index: 1;
-  filter: brightness(0.85);
+  filter: brightness(0.82) contrast(1.05);
 }
 
 .m-hub-hero__overlay {
@@ -28,8 +38,9 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(14, 46, 53, 0.72) 0%,
-    rgba(14, 46, 53, 0.88) 100%
+    rgba(14, 46, 53, 0.78) 0%,
+    rgba(14, 46, 53, 0.65) 45%,
+    rgba(14, 46, 53, 0.94) 100%
   );
   z-index: 2;
 }
@@ -38,51 +49,249 @@
   position: relative;
   z-index: 3;
   text-align: center;
-  max-width: 840px;
-  padding-block: var(--wp--preset--spacing--60, 48px);
+  max-width: 920px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.m-hub-hero__badge-wrap {
+  margin-bottom: var(--wp--preset--spacing--20, 16px);
+}
+
+.m-hub-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
+  font-size: var(--wp--preset--font-size--xs, 12px);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.m-hub-hero__badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--wp--preset--color--crimson, #E0281D);
+  box-shadow: 0 0 10px rgba(224, 40, 29, 0.8);
 }
 
 .m-hub-hero__title {
+  font-family: var(--wp--preset--font-family--display, 'Playfair Display', serif);
   color: var(--wp--preset--color--white, #FFFFFF);
-  font-size: clamp(38px, 5.5vw, 62px);
+  font-size: clamp(38px, 6vw, 68px);
   font-weight: 800;
-  line-height: 1.12;
-  margin-bottom: var(--wp--preset--spacing--30, 24px);
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin: 0 0 var(--wp--preset--spacing--30, 24px);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .m-hub-hero__subtitle {
-  color: rgba(255, 255, 255, 0.92);
-  font-size: clamp(16px, 2vw, 20px);
+  color: rgba(255, 255, 255, 0.94);
+  font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
+  font-size: clamp(16px, 2.2vw, 20px);
   line-height: 1.65;
-  margin-inline: auto;
+  margin: 0 auto var(--wp--preset--spacing--40, 32px);
+  max-width: 68ch;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Founder Presence Feature Pill */
+.m-hub-hero__founder {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--wp--preset--spacing--20, 16px);
+  background: rgba(14, 46, 53, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 20px;
+  border-radius: 9999px;
   margin-bottom: var(--wp--preset--spacing--40, 32px);
-  max-width: 64ch;
+  text-align: left;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.m-hub-hero__founder:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.m-hub-hero__founder-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #E0281D 0%, #0E2E35 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  flex-shrink: 0;
+}
+
+.m-hub-hero__founder-initials {
+  color: #FFFFFF;
+  font-family: var(--wp--preset--font-family--display, 'Playfair Display', serif);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.m-hub-hero__founder-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+.m-hub-hero__founder-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.m-hub-hero__founder-name {
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.m-hub-hero__founder-role {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .m-hub-hero__actions {
   display: flex;
   justify-content: center;
   gap: var(--wp--preset--spacing--20, 16px);
+  flex-wrap: wrap;
 }
 
 .m-hub-hero__cta {
   display: inline-flex;
   align-items: center;
-  background: var(--wp--preset--color--white, #FFFFFF);
-  color: var(--wp--preset--color--teal-primary, #0E2E35);
-  font-weight: 700;
-  font-size: var(--wp--preset--font-size--base, 16px);
-  padding: 16px 36px;
+  justify-content: center;
+  padding: 16px 32px;
   border-radius: 8px;
+  font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
+  font-weight: 700;
+  font-size: var(--wp--preset--font-size--sm, 14px);
   text-decoration: none;
-  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.25);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  letter-spacing: 0.02em;
 }
 
-.m-hub-hero__cta:hover {
+.m-hub-hero__cta--primary {
+  background-color: var(--wp--preset--color--crimson, #E0281D);
+  color: #FFFFFF;
+  box-shadow: 0 8px 24px rgba(224, 40, 29, 0.4);
+}
+
+.m-hub-hero__cta--primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.35);
-  background: var(--wp--preset--color--teal-tint, #EEF7F9);
-  color: var(--wp--preset--color--teal-primary, #0E2E35);
+  filter: brightness(1.1);
+  box-shadow: 0 12px 30px rgba(224, 40, 29, 0.5);
+  color: #FFFFFF;
+}
+
+.m-hub-hero__cta--secondary {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #FFFFFF;
+}
+
+.m-hub-hero__cta--secondary:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.22);
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+}
+
+/* Animated Scroll Down Indicator */
+.m-hub-hero__scroll-hint {
+  position: absolute;
+  bottom: var(--wp--preset--spacing--30, 24px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
+  font-size: var(--wp--preset--font-size--xs, 12px);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: opacity 0.2s ease;
+}
+
+.m-hub-hero__scroll-hint:hover {
+  opacity: 1;
+  color: #FFFFFF;
+}
+
+.m-hub-hero__scroll-indicator {
+  width: 24px;
+  height: 38px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+}
+
+.m-hub-hero__scroll-dot {
+  width: 4px;
+  height: 8px;
+  border-radius: 2px;
+  background-color: #FFFFFF;
+  animation: hubScrollBounce 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes hubScrollBounce {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(12px);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .m-hub-hero {
+    padding-top: 100px;
+    padding-bottom: 80px;
+  }
+  .m-hub-hero__founder {
+    border-radius: 16px;
+    padding: 12px 16px;
+  }
+  .m-hub-hero__actions {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+  }
+  .m-hub-hero__cta {
+    width: 100%;
+  }
 }
