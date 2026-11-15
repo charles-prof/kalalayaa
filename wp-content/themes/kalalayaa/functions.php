@@ -22,10 +22,12 @@ require_once get_template_directory() . '/inc/template-tags.php';
 require_once get_template_directory() . '/inc/class-staff-dashboard.php';
 require_once get_template_directory() . '/inc/class-staff-onboarding.php';
 require_once get_template_directory() . '/inc/class-login-branding.php';
+require_once get_template_directory() . '/inc/class-staff-portal.php';
 
 new Kalalayaa_Staff_Dashboard();
 new Kalalayaa_Staff_Onboarding();
 new Kalalayaa_Login_Branding();
+new Kalalayaa_Staff_Portal();
 
 /* ──────────────────────────────────────────────
    2. Theme Setup

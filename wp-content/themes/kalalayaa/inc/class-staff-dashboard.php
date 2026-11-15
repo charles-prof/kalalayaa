@@ -494,7 +494,7 @@ class Kalalayaa_Staff_Dashboard {
 		}
 
 		if ( in_array( 'editor', (array) $user->roles, true ) ) {
-			return admin_url( 'admin.php?page=kalalayaa-campus-events' );
+			return home_url( '/staff-portal/' );
 		}
 
 		return $redirect_to;
