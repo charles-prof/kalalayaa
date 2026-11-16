@@ -1,16 +1,16 @@
 /**
  * SMACSS: Module - Founder Sanctuary & Trust
  *
- * Highlights Mrs. Dhipikca Rajasekaran's founding vision, philosophy,
- * and Kalalayaa's 4 core credibility metrics in a 2-column layout.
+ * Unified Founder Sanctuary showcasing Mrs. Dhipikca Rajasekaran's founding pledge,
+ * maternal philosophy, and continuous institutional trust ribbon.
  *
  * @package Kalalayaa
  * @author  CharNithi Software Crafts
  */
 
 .m-trust {
-  padding-block: var(--wp--preset--spacing--80, 80px);
-  background-color: #FFFFFF;
+  padding-block: var(--wp--preset--spacing--120, 96px);
+  background-color: var(--wp--preset--color--teal-canvas, #F4FAFB);
   border-top: 1px solid var(--wp--preset--color--border-subtle, #D6E8EB);
   border-bottom: 1px solid var(--wp--preset--color--border-subtle, #D6E8EB);
 }
@@ -19,7 +19,7 @@
   text-align: center;
   max-width: 760px;
   margin-inline: auto;
-  margin-bottom: var(--wp--preset--spacing--60, 48px);
+  margin-bottom: var(--wp--preset--spacing--80, 64px);
 }
 
 .m-trust__eyebrow {
@@ -28,51 +28,64 @@
   font-size: var(--wp--preset--font-size--xs, 12px);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   color: var(--wp--preset--color--crimson, #E0281D);
   margin-bottom: var(--wp--preset--spacing--10, 8px);
 }
 
 .m-trust__title {
-  font-family: var(--wp--preset--font-family--display, 'Playfair Display', serif);
-  font-size: clamp(32px, 4vw, 48px);
+  font-family: var(--wp--preset--font-family--display, 'Playfair Display', Georgia, serif);
+  font-size: clamp(32px, 4vw, 46px);
   font-weight: 800;
   color: var(--wp--preset--color--teal-primary, #0E2E35);
   line-height: 1.2;
-  margin: 0 0 var(--wp--preset--spacing--20, 16px);
+  margin-top: 0;
+  margin-bottom: var(--wp--preset--spacing--20, 16px);
 }
 
 .m-trust__subtitle {
   font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
   font-size: var(--wp--preset--font-size--base, 16px);
-  line-height: 1.6;
+  line-height: 1.65;
   color: var(--wp--preset--color--teal-muted, #2A4F5A);
-  margin: 0;
+  margin: 0 auto;
 }
 
-/* 2-Column Grid: Founder Portrait + Sacred Voice */
-.m-trust__grid {
-  display: grid;
-  grid-template-columns: 360px 1fr;
-  gap: var(--wp--preset--spacing--60, 48px);
-  align-items: start;
-}
-
-/* Left Column: Founder Portrait Card */
-.m-trust__founder-card {
-  background: var(--wp--preset--color--teal-tint, #EEF7F9);
+/* ──────────────────────────────────────────────
+   Unified Founder Sanctuary Card
+   ────────────────────────────────────────────── */
+.m-trust__sanctuary {
+  background: #FFFFFF;
   border: 1px solid var(--wp--preset--color--border-subtle, #D6E8EB);
-  border-radius: 16px;
+  border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 12px 32px -8px rgba(14, 46, 53, 0.08);
+  box-shadow: 0 16px 48px -12px rgba(14, 46, 53, 0.08);
+}
+
+.m-trust__body {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: var(--wp--preset--spacing--60, 48px);
+  padding: var(--wp--preset--spacing--60, 48px);
+  align-items: center;
+}
+
+/* Left Column: Portrait & Title */
+.m-trust__portrait-col {
+  display: flex;
+  flex-direction: column;
 }
 
 .m-trust__portrait-frame {
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 3;
+  border-radius: 16px;
   overflow: hidden;
-  background-color: var(--wp--preset--color--teal-primary, #0E2E35);
+  box-shadow: 0 8px 24px -4px rgba(14, 46, 53, 0.1);
+  border: 1px solid var(--wp--preset--color--border-subtle, #D6E8EB);
+  margin-bottom: var(--wp--preset--spacing--20, 16px);
+  background-color: var(--wp--preset--color--teal-tint, #EEF7F9);
 }
 
 .m-trust__portrait-img {
@@ -82,43 +95,21 @@
   transition: transform 0.4s ease;
 }
 
-.m-trust__founder-card:hover .m-trust__portrait-img {
-  transform: scale(1.03);
+.m-trust__sanctuary:hover .m-trust__portrait-img {
+  transform: scale(1.02);
 }
 
-.m-trust__portrait-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 50%, rgba(14, 46, 53, 0.8) 100%);
-}
-
-.m-trust__portrait-badge {
-  position: absolute;
-  bottom: 12px;
-  left: 12px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(224, 40, 29, 0.9);
-  color: #FFFFFF;
-  padding: 4px 12px;
-  border-radius: 9999px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.m-trust__founder-details {
-  padding: var(--wp--preset--spacing--30, 24px);
+.m-trust__founder-meta {
+  padding-inline: 4px;
 }
 
 .m-trust__founder-name {
-  font-family: var(--wp--preset--font-family--display, 'Playfair Display', serif);
-  font-size: 22px;
+  font-family: var(--wp--preset--font-family--display, 'Playfair Display', Georgia, serif);
+  font-size: 20px;
   font-weight: 800;
   color: var(--wp--preset--color--teal-primary, #0E2E35);
-  margin: 0 0 4px;
+  margin-top: 0;
+  margin-bottom: 4px;
 }
 
 .m-trust__founder-title {
@@ -126,81 +117,58 @@
   font-size: 13px;
   font-weight: 700;
   color: var(--wp--preset--color--crimson, #E0281D);
-  margin: 0 0 var(--wp--preset--spacing--20, 16px);
+  margin-top: 0;
+  margin-bottom: var(--wp--preset--spacing--10, 8px);
 }
 
-.m-trust__founder-bio {
-  font-size: 14px;
-  line-height: 1.6;
+.m-trust__founder-note {
+  font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
+  font-size: 13px;
+  line-height: 1.55;
   color: var(--wp--preset--color--teal-muted, #2A4F5A);
-  margin: 0 0 var(--wp--preset--spacing--30, 24px);
+  margin: 0;
 }
 
-.m-trust__seal {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--wp--preset--color--teal-primary, #0E2E35);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding-top: var(--wp--preset--spacing--20, 16px);
-  border-top: 1px solid rgba(14, 46, 53, 0.1);
-}
-
-.m-trust__seal-icon {
-  color: var(--wp--preset--color--crimson, #E0281D);
-  font-size: 14px;
-}
-
-/* Right Column: Founder's Voice & Stats */
-.m-trust__voice-card {
+/* Right Column: Maternal Pledge & Editorial Narrative */
+.m-trust__story-col {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: var(--wp--preset--spacing--40, 32px);
 }
 
-.m-trust__quote-box {
-  position: relative;
-  padding: var(--wp--preset--spacing--40, 32px);
-  background: var(--wp--preset--color--white, #FFFFFF);
-  border: 1px solid var(--wp--preset--color--border-subtle, #D6E8EB);
-  border-left: 4px solid var(--wp--preset--color--crimson, #E0281D);
-  border-radius: 12px;
-  box-shadow: 0 8px 24px -4px rgba(14, 46, 53, 0.06);
-}
-
-.m-trust__glyph {
-  font-family: var(--wp--preset--font-family--display, 'Playfair Display', serif);
-  font-size: 72px;
-  line-height: 1;
-  color: rgba(224, 40, 29, 0.15);
-  display: block;
-  margin-bottom: -32px;
+.m-trust__pledge-mark {
+  font-family: var(--wp--preset--font-family--display, 'Playfair Display', Georgia, serif);
+  font-size: 64px;
+  line-height: 0.8;
+  color: var(--wp--preset--color--teal-primary, #0E2E35);
+  opacity: 0.15;
+  margin-bottom: -16px;
+  user-select: none;
 }
 
 .m-trust__quote {
-  font-family: var(--wp--preset--font-family--display, 'Playfair Display', serif);
-  font-size: clamp(20px, 2.5vw, 26px);
+  font-family: var(--wp--preset--font-family--display, 'Playfair Display', Georgia, serif);
+  font-size: clamp(20px, 2.3vw, 25px);
   font-style: italic;
   font-weight: 600;
   color: var(--wp--preset--color--teal-primary, #0E2E35);
   line-height: 1.45;
-  margin: 0 0 var(--wp--preset--spacing--20, 16px);
+  margin-top: 0;
+  margin-bottom: var(--wp--preset--spacing--20, 16px);
   border: none;
   padding: 0;
 }
 
-.m-trust__voice-paragraph {
+.m-trust__narrative {
   font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
   font-size: 15px;
-  line-height: 1.65;
+  line-height: 1.7;
   color: var(--wp--preset--color--teal-muted, #2A4F5A);
-  margin: 0 0 var(--wp--preset--spacing--30, 24px);
+  margin-top: 0;
+  margin-bottom: var(--wp--preset--spacing--30, 24px);
 }
 
-.m-trust__signature-wrap {
+.m-trust__signature-block {
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -209,7 +177,7 @@
 }
 
 .m-trust__signature-name {
-  font-family: var(--wp--preset--font-family--display, 'Playfair Display', serif);
+  font-family: var(--wp--preset--font-family--display, 'Playfair Display', Georgia, serif);
   font-size: 18px;
   font-weight: 700;
   font-style: italic;
@@ -217,69 +185,103 @@
 }
 
 .m-trust__signature-title {
+  font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
   font-size: 12px;
+  font-weight: 600;
   color: var(--wp--preset--color--teal-muted, #2A4F5A);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
 }
 
-/* 4 Credibility Metric Cards */
-.m-trust__stats-grid {
+/* ──────────────────────────────────────────────
+   Continuous Horizontal Trust Ribbon
+   ────────────────────────────────────────────── */
+.m-trust__ribbon {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--wp--preset--spacing--20, 16px);
+  background: var(--wp--preset--color--teal-tint, #EEF7F9);
+  border-top: 1px solid var(--wp--preset--color--border-subtle, #D6E8EB);
+  padding: var(--wp--preset--spacing--30, 24px) var(--wp--preset--spacing--40, 32px);
+  align-items: center;
 }
 
-.m-trust__stat-card {
-  background: var(--wp--preset--color--teal-tint, #EEF7F9);
-  border: 1px solid var(--wp--preset--color--border-subtle, #D6E8EB);
-  border-radius: 12px;
-  padding: var(--wp--preset--spacing--30, 24px) var(--wp--preset--spacing--20, 16px);
-  text-align: center;
+.m-trust__ribbon-item {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  text-align: center;
+  padding-inline: var(--wp--preset--spacing--20, 16px);
 }
 
-.m-trust__stat-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--wp--preset--color--crimson, #E0281D);
-}
-
-.m-trust__stat-number {
-  font-family: var(--wp--preset--font-family--display, 'Playfair Display', serif);
-  font-size: clamp(28px, 3.5vw, 36px);
+.m-trust__ribbon-number {
+  font-family: var(--wp--preset--font-family--display, 'Playfair Display', Georgia, serif);
+  font-size: clamp(26px, 3vw, 32px);
   font-weight: 800;
   color: var(--wp--preset--color--teal-primary, #0E2E35);
-  line-height: 1;
+  line-height: 1.1;
+  margin-bottom: 4px;
 }
 
-.m-trust__stat-label {
+.m-trust__ribbon-label {
   font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
   font-size: 12px;
   font-weight: 700;
   color: var(--wp--preset--color--teal-primary, #0E2E35);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
 }
 
-.m-trust__stat-sub {
+.m-trust__ribbon-sub {
+  font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
   font-size: 11px;
   color: var(--wp--preset--color--teal-muted, #2A4F5A);
 }
 
-@media (max-width: 900px) {
-  .m-trust__grid {
-    grid-template-columns: 1fr;
+.m-trust__ribbon-divider {
+  display: none;
+}
+
+/* ──────────────────────────────────────────────
+   Responsive Breakpoints
+   ────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .m-trust {
+    padding-block: var(--wp--preset--spacing--90, 72px);
   }
-  .m-trust__stats-grid {
+  .m-trust__header {
+    margin-bottom: var(--wp--preset--spacing--60, 48px);
+  }
+  .m-trust__body {
+    grid-template-columns: 1fr;
+    gap: var(--wp--preset--spacing--40, 32px);
+    padding: var(--wp--preset--spacing--40, 32px);
+  }
+  .m-trust__portrait-frame {
+    max-width: 440px;
+    margin-inline: auto;
+  }
+  .m-trust__founder-meta {
+    text-align: center;
+  }
+  .m-trust__ribbon {
     grid-template-columns: repeat(2, 1fr);
+    row-gap: var(--wp--preset--spacing--30, 24px);
+    padding: var(--wp--preset--spacing--30, 24px) var(--wp--preset--spacing--20, 16px);
   }
 }
 
-@media (max-width: 500px) {
-  .m-trust__stats-grid {
+@media (max-width: 600px) {
+  .m-trust {
+    padding-block: var(--wp--preset--spacing--70, 56px);
+  }
+  .m-trust__header {
+    margin-bottom: var(--wp--preset--spacing--40, 32px);
+  }
+  .m-trust__body {
+    padding: var(--wp--preset--spacing--30, 24px) var(--wp--preset--spacing--20, 16px);
+  }
+  .m-trust__ribbon {
     grid-template-columns: 1fr;
+    row-gap: var(--wp--preset--spacing--20, 16px);
   }
 }

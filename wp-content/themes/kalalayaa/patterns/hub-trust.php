@@ -3,7 +3,7 @@
  * Title: Hub Trust & Founder Story
  * Slug: kalalayaa/hub-trust
  * Categories: kalalayaa-hero
- * Description: Dedicated founder sanctuary showcasing Mrs. Dhipikca Rajasekaran's vision, philosophy, and institutional trust metrics.
+ * Description: Unified founder sanctuary showcasing Mrs. Dhipikca Rajasekaran's vision, maternal pledge, and continuous trust ribbon.
  *
  * @package Kalalayaa
  * @author  CharNithi Software Crafts
@@ -15,86 +15,88 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $founder_photo = get_theme_file_uri( 'assets/photos/founder-dhipikca.jpg' );
 ?>
-<section class="m-trust" id="founder-story" aria-label="Founder Story and Educational Philosophy">
+<section class="m-trust" id="founder-story" aria-label="<?php esc_attr_e( 'Founder Story and Educational Philosophy', 'kalalayaa' ); ?>">
   <div class="l-container">
+
+    <!-- Section Header -->
     <div class="m-trust__header">
-      <span class="m-trust__eyebrow">Our Living Philosophy &bull; Tiruchirappalli</span>
-      <h2 class="m-trust__title">Rooted in Culture. Inspired by Love.</h2>
+      <span class="m-trust__eyebrow"><?php esc_html_e( 'Our Living Philosophy • Tiruchirappalli', 'kalalayaa' ); ?></span>
+      <h2 class="m-trust__title"><?php esc_html_e( 'Rooted in Culture. Inspired by Love.', 'kalalayaa' ); ?></h2>
       <p class="m-trust__subtitle">
-        Kalalayaa was born from a mother&rsquo;s sacred promise: that no child should ever have to choose between modern excellence and cultural soul.
+        <?php esc_html_e( 'Kalalayaa was born from a mother’s sacred promise: that no child should ever have to choose between modern academic excellence and cultural soul.', 'kalalayaa' ); ?>
       </p>
     </div>
 
-    <div class="m-trust__grid">
-      <!-- Left Column: Founder Portrait & Credibility Card -->
-      <div class="m-trust__founder-card">
-        <div class="m-trust__portrait-frame">
-          <img class="m-trust__portrait-img"
-               src="<?php echo esc_url( $founder_photo ); ?>"
-               alt="Mrs. Dhipikca Rajasekaran nurturing students at Kalalayaa"
-               loading="lazy"
-               width="600"
-               height="600">
-          <div class="m-trust__portrait-overlay" aria-hidden="true"></div>
-          <div class="m-trust__portrait-badge">
-            <span class="m-trust__portrait-badge-icon" aria-hidden="true">&#9829;</span>
-            <span class="m-trust__portrait-badge-text">Motherly Care Since 2016</span>
+    <!-- Unified Founder Sanctuary Card -->
+    <div class="m-trust__sanctuary">
+
+      <!-- Sanctuary Main Story Body -->
+      <div class="m-trust__body">
+
+        <!-- Left Column: Portrait & Founder Credibility -->
+        <div class="m-trust__portrait-col">
+          <div class="m-trust__portrait-frame">
+            <img class="m-trust__portrait-img"
+                 src="<?php echo esc_url( $founder_photo ); ?>"
+                 alt="<?php esc_attr_e( 'Mrs. Dhipikca Rajasekaran nurturing students at Kalalayaa', 'kalalayaa' ); ?>"
+                 loading="lazy"
+                 width="600"
+                 height="600">
+          </div>
+          <div class="m-trust__founder-meta">
+            <h3 class="m-trust__founder-name"><?php esc_html_e( 'Mrs. Dhipikca Rajasekaran', 'kalalayaa' ); ?></h3>
+            <p class="m-trust__founder-title"><?php esc_html_e( 'Founder & Managing Trustee (“Aunty”)', 'kalalayaa' ); ?></p>
+            <p class="m-trust__founder-note">
+              <?php esc_html_e( 'Devoted over a decade across Tiruchirappalli to crafting sanctuaries where classical arts and tender emotional security walk hand in hand.', 'kalalayaa' ); ?>
+            </p>
           </div>
         </div>
 
-        <div class="m-trust__founder-details">
-          <h3 class="m-trust__founder-name">Mrs. Dhipikca Rajasekaran</h3>
-          <p class="m-trust__founder-title">Co-Founder &amp; Managing Trustee (&ldquo;Aunty&rdquo;)</p>
-          <p class="m-trust__founder-bio">
-            Known affectionately across Tiruchirappalli as &ldquo;Aunty,&rdquo; Mrs. Dhipikca has devoted over a decade to crafting educational sanctuaries where discipline in classical arts and tender emotional security walk hand in hand.
-          </p>
-          <div class="m-trust__seal">
-            <span class="m-trust__seal-icon" aria-hidden="true">&#10022;</span>
-            <span class="m-trust__seal-text">Kalalayaa Institutions &bull; 6 Campuses in Trichy</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right Column: Founder's Sacred Voice & Institutional Credibility -->
-      <div class="m-trust__voice-card">
-        <div class="m-trust__quote-box">
-          <span class="m-trust__glyph" aria-hidden="true">&ldquo;</span>
+        <!-- Right Column: Maternal Pledge & Vision -->
+        <div class="m-trust__story-col">
+          <div class="m-trust__pledge-mark" aria-hidden="true">“</div>
           <blockquote class="m-trust__quote">
-            Every child who walks through our doors is not just a student; they are our sacred trust. We preserve the warmth of a mother’s embrace while igniting the spark of discipline, cultural rootedness, and modern scientific inquiry.
+            <?php esc_html_e( 'Every child who walks through our doors is not just a student; they are our sacred trust. We preserve the warmth of a mother’s embrace while igniting the spark of discipline, cultural rootedness, and modern scientific inquiry.', 'kalalayaa' ); ?>
           </blockquote>
-          <p class="m-trust__voice-paragraph">
-            From our very first dance step in KK Nagar to six flourishing academies across Trichy, our promise has never wavered: your child will always be known by name, cherished for their uniqueness, and inspired to reach their highest potential with confidence and grace.
+          <p class="m-trust__narrative">
+            <?php esc_html_e( 'From our very first dance step in KK Nagar to six flourishing sanctuaries across Trichy, our promise has never wavered: your child will always be known by name, cherished for their uniqueness, and inspired to reach their highest potential with confidence and grace.', 'kalalayaa' ); ?>
           </p>
-          <div class="m-trust__signature-wrap">
-            <span class="m-trust__signature-name">Dhipikca Rajasekaran</span>
-            <span class="m-trust__signature-title">Managing Trustee &bull; Kalalayaa Schools &amp; Fine Arts</span>
+          <div class="m-trust__signature-block">
+            <span class="m-trust__signature-name"><?php esc_html_e( 'Dhipikca Rajasekaran', 'kalalayaa' ); ?></span>
+            <span class="m-trust__signature-title"><?php esc_html_e( 'Managing Trustee • Kalalayaa Schools & Fine Arts', 'kalalayaa' ); ?></span>
           </div>
         </div>
 
-        <!-- 4 Credibility Metric Cards -->
-        <div class="m-trust__stats-grid" aria-label="Kalalayaa Impact Metrics">
-          <div class="m-trust__stat-card">
-            <strong class="m-trust__stat-number">10+</strong>
-            <span class="m-trust__stat-label">Years of Cultural Heritage</span>
-            <span class="m-trust__stat-sub">Established 2016</span>
-          </div>
-          <div class="m-trust__stat-card">
-            <strong class="m-trust__stat-number">6</strong>
-            <span class="m-trust__stat-label">Specialized Campuses</span>
-            <span class="m-trust__stat-sub">Across Tiruchirappalli</span>
-          </div>
-          <div class="m-trust__stat-card">
-            <strong class="m-trust__stat-number">1,400+</strong>
-            <span class="m-trust__stat-label">Children Nurtured</span>
-            <span class="m-trust__stat-sub">Early Years to High School</span>
-          </div>
-          <div class="m-trust__stat-card">
-            <strong class="m-trust__stat-number">150+</strong>
-            <span class="m-trust__stat-label">Passionate Gurus &amp; Staff</span>
-            <span class="m-trust__stat-sub">1:8 Average Care Ratio</span>
-          </div>
+      </div>
+
+      <!-- Bottom Trust Ribbon (Continuous Hairline Metrics) -->
+      <div class="m-trust__ribbon" aria-label="<?php esc_attr_e( 'Institutional Milestones', 'kalalayaa' ); ?>">
+        <div class="m-trust__ribbon-item">
+          <strong class="m-trust__ribbon-number"><?php esc_html_e( '10+ Years', 'kalalayaa' ); ?></strong>
+          <span class="m-trust__ribbon-label"><?php esc_html_e( 'Sacred Cultural Heritage', 'kalalayaa' ); ?></span>
+          <span class="m-trust__ribbon-sub"><?php esc_html_e( 'Established 2016', 'kalalayaa' ); ?></span>
+        </div>
+        <div class="m-trust__ribbon-divider" aria-hidden="true"></div>
+        <div class="m-trust__ribbon-item">
+          <strong class="m-trust__ribbon-number"><?php esc_html_e( '6 Campuses', 'kalalayaa' ); ?></strong>
+          <span class="m-trust__ribbon-label"><?php esc_html_e( 'Across Tiruchirappalli', 'kalalayaa' ); ?></span>
+          <span class="m-trust__ribbon-sub"><?php esc_html_e( 'Specialized Sanctuaries', 'kalalayaa' ); ?></span>
+        </div>
+        <div class="m-trust__ribbon-divider" aria-hidden="true"></div>
+        <div class="m-trust__ribbon-item">
+          <strong class="m-trust__ribbon-number"><?php esc_html_e( '1,400+', 'kalalayaa' ); ?></strong>
+          <span class="m-trust__ribbon-label"><?php esc_html_e( 'Children Nurtured', 'kalalayaa' ); ?></span>
+          <span class="m-trust__ribbon-sub"><?php esc_html_e( 'Early Years to High School', 'kalalayaa' ); ?></span>
+        </div>
+        <div class="m-trust__ribbon-divider" aria-hidden="true"></div>
+        <div class="m-trust__ribbon-item">
+          <strong class="m-trust__ribbon-number"><?php esc_html_e( '1:8 Ratio', 'kalalayaa' ); ?></strong>
+          <span class="m-trust__ribbon-label"><?php esc_html_e( 'Attentive Care Ratio', 'kalalayaa' ); ?></span>
+          <span class="m-trust__ribbon-sub"><?php esc_html_e( 'Motherly Teacher Mentorship', 'kalalayaa' ); ?></span>
         </div>
       </div>
+
     </div>
+
   </div>
 </section>

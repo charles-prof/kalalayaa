@@ -1,22 +1,22 @@
 /**
  * SMACSS: Module - Hub Call to Action
  *
- * Gestalt-compliant admissions invitation module.
- * Incorporates Law of Common Region, Law of Proximity, and balanced visual affordance.
+ * Warm Editorial Sanctuary admissions invitation module.
+ * Replaces corporate SaaS styling with a welcoming, maternal aesthetic.
  *
  * @package Kalalayaa
  * @author  CharNithi Software Crafts
  */
 
 .m-hub-cta {
-  padding-block: var(--wp--preset--spacing--90, 72px);
+  padding-block: var(--wp--preset--spacing--120, 96px);
   background: var(--wp--preset--color--cream-bg, #FBF8F2);
-  color: var(--wp--preset--color--white, #FFFFFF);
+  color: var(--wp--preset--color--teal-primary, #0E2E35);
   box-sizing: border-box;
 }
 
 /* ──────────────────────────────────────────────
-   1. Law of Common Region (Bounded Card Container)
+   1. Warm Editorial Sanctuary Card
    ────────────────────────────────────────────── */
 .m-hub-cta__card {
   position: relative;
@@ -24,32 +24,15 @@
   margin-inline: auto;
   padding: clamp(40px, 6vw, 64px) clamp(24px, 5vw, 56px);
   border-radius: 24px;
-  background:
-    radial-gradient(ellipse at 50% 0%, rgba(224, 40, 29, 0.16) 0%, transparent 60%),
-    linear-gradient(145deg, #0E2E35 0%, #091F24 100%);
-  border: 1px solid rgba(14, 46, 53, 0.15);
-  box-shadow:
-    0 24px 60px -12px rgba(14, 46, 53, 0.25),
-    0 1px 2px rgba(255, 255, 255, 0.08) inset;
+  background: #FFFFFF;
+  border: 1px solid var(--wp--preset--color--border-subtle, #D6E8EB);
+  box-shadow: 0 16px 48px -12px rgba(14, 46, 53, 0.08);
   text-align: center;
   overflow: hidden;
 }
 
-/* Subtle corner aura */
-.m-hub-cta__card::before {
-  content: '';
-  position: absolute;
-  top: -120px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 480px;
-  height: 240px;
-  background: radial-gradient(ellipse, rgba(224, 40, 29, 0.2) 0%, transparent 70%);
-  pointer-events: none;
-}
-
 /* ──────────────────────────────────────────────
-   2. Law of Proximity — Header Group
+   2. Header Group
    ────────────────────────────────────────────── */
 .m-hub-cta__header-group {
   display: flex;
@@ -68,49 +51,42 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: rgba(255, 255, 255, 0.9);
-  background: rgba(255, 255, 255, 0.08);
+  color: var(--wp--preset--color--crimson, #E0281D);
+  background: var(--wp--preset--color--crimson-soft, #FDECEA);
   padding: 6px 16px;
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(224, 40, 29, 0.2);
 }
 
-.m-hub-cta__eyebrow-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background-color: var(--wp--preset--color--crimson, #E0281D);
-  box-shadow: 0 0 8px rgba(224, 40, 29, 0.8);
+.m-hub-cta__eyebrow-symbol {
+  font-size: 11px;
+  color: var(--wp--preset--color--crimson, #E0281D);
 }
 
-/* Title in Playfair Display — Balanced without orphans */
 .m-hub-cta__title {
   font-family: var(--wp--preset--font-family--display, 'Playfair Display', Georgia, serif);
-  color: var(--wp--preset--color--white, #FFFFFF);
-  font-size: clamp(30px, 4.5vw, 46px);
+  color: var(--wp--preset--color--teal-primary, #0E2E35);
+  font-size: clamp(30px, 4.5vw, 44px);
   font-weight: 800;
-  line-height: 1.18;
+  line-height: 1.2;
   margin: 0;
-  max-width: 22ch;
+  max-width: 24ch;
   text-wrap: balance;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
 }
 
-/* Subtitle — Ergonomic reading width */
 .m-hub-cta__subtitle {
-  color: rgba(255, 255, 255, 0.88);
+  color: var(--wp--preset--color--teal-muted, #2A4F5A);
   font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
   font-size: clamp(15px, 1.8vw, 17px);
   line-height: 1.65;
   margin-inline: auto;
   margin-top: 0;
   margin-bottom: var(--wp--preset--spacing--40, 32px);
-  max-width: 58ch;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  max-width: 60ch;
 }
 
 /* ──────────────────────────────────────────────
-   3. Action Buttons (Visual Affordance & Fitts's Law)
+   3. Action Buttons
    ────────────────────────────────────────────── */
 .m-hub-cta__actions {
   display: flex;
@@ -126,7 +102,7 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 15px 28px;
+  padding: 14px 28px;
   border-radius: 10px;
   font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
   font-weight: 700;
@@ -134,40 +110,37 @@
   line-height: 1;
   text-decoration: none;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, filter 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
   letter-spacing: 0.02em;
 }
 
 /* Primary CTA — Kalalayaa Crimson */
 .m-hub-cta__btn--primary {
   background: var(--wp--preset--color--crimson, #E0281D);
-  color: var(--wp--preset--color--white, #FFFFFF);
-  box-shadow: 0 4px 16px rgba(224, 40, 29, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  box-shadow: 0 4px 16px rgba(224, 40, 29, 0.25);
+  border: 1px solid var(--wp--preset--color--crimson, #E0281D);
 }
 
 .m-hub-cta__btn--primary:hover {
   transform: translateY(-2px);
-  filter: brightness(1.12);
-  color: var(--wp--preset--color--white, #FFFFFF);
-  box-shadow: 0 8px 24px rgba(224, 40, 29, 0.5);
+  background: #C41F15;
+  color: #FFFFFF;
+  box-shadow: 0 8px 24px rgba(224, 40, 29, 0.35);
 }
 
-/* Secondary CTA — Warm Glass with accessible outline */
+/* Secondary CTA — Deep Teal Outline */
 .m-hub-cta__btn--secondary {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1.5px solid rgba(255, 255, 255, 0.45);
-  color: var(--wp--preset--color--white, #FFFFFF);
+  background: #FFFFFF;
+  border: 1.5px solid var(--wp--preset--color--teal-primary, #0E2E35);
+  color: var(--wp--preset--color--teal-primary, #0E2E35);
 }
 
 .m-hub-cta__btn--secondary:hover {
   transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.22);
-  border-color: #FFFFFF;
-  color: var(--wp--preset--color--white, #FFFFFF);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  background: var(--wp--preset--color--teal-primary, #0E2E35);
+  color: #FFFFFF;
+  box-shadow: 0 8px 20px rgba(14, 46, 53, 0.15);
 }
 
 /* ──────────────────────────────────────────────
@@ -181,11 +154,13 @@
   margin: 0;
   font-family: var(--wp--preset--font-family--ui, 'Inter', sans-serif);
   font-size: var(--wp--preset--font-size--xs, 12px);
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--wp--preset--color--teal-muted, #2A4F5A);
 }
 
 .m-hub-cta__trust-icon {
-  font-size: 14px;
+  flex-shrink: 0;
+  color: var(--wp--preset--color--teal-primary, #0E2E35);
+  opacity: 0.7;
 }
 
 /* ──────────────────────────────────────────────
@@ -193,7 +168,7 @@
    ────────────────────────────────────────────── */
 @media (max-width: 640px) {
   .m-hub-cta {
-    padding-block: var(--wp--preset--spacing--60, 48px);
+    padding-block: var(--wp--preset--spacing--70, 56px);
   }
   .m-hub-cta__card {
     padding: 36px 20px;
