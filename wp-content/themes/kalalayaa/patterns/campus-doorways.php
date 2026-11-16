@@ -34,6 +34,15 @@ $campuses = kalalayaa_get_campus_registry();
           <div class="m-doorway-card__body">
             <h3 class="m-doorway-card__name"><?php echo esc_html( $campus['name'] ); ?></h3>
             <p class="m-doorway-card__subtitle"><?php echo esc_html( $campus['subtitle'] ); ?></p>
+            <?php if ( ! empty( $campus['address'] ) ) : ?>
+              <div class="m-doorway-card__address">
+                <svg class="m-doorway-card__address-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span class="m-doorway-card__address-text"><?php echo esc_html( $campus['address'] ); ?></span>
+              </div>
+            <?php endif; ?>
             <div class="m-doorway-card__meta">
               <span class="m-doorway-card__stat">Est. <?php echo esc_html( $campus['established'] ); ?></span>
               <span class="m-doorway-card__dot">·</span>
